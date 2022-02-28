@@ -38,9 +38,9 @@ A request for population information is sent to HR.
 ## MAIN SUCCESS SCENARIO
 
 1. Someone request population information for the whole world.
-2. HR advisor captures name of the role to get salary information for.
-3. HR advisor extracts current salary information of all employees of the given role.
-4. HR advisor provides report to finance.
+2. Employee of an organisation captures the population data for every country to get population information.
+3. Employee of an organisation sorts the population for each country biggest to smallest.
+4. Employee of an organisation provides population report.
 
 ## EXTENSIONS
 
