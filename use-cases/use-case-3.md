@@ -33,7 +33,7 @@ Project manager
 
 ### Trigger
 
-A request for population information is sent to HR.
+A request for population information is sent to the project team.
 
 ## MAIN SUCCESS SCENARIO
 
