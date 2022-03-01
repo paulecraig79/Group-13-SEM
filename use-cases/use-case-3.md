@@ -5,7 +5,7 @@
 
 ### Goal in Context
 
-As an *Employee of an Organisation* I want *to produce a report on all the countries in the world organised by largest population to smallest* so that *I see where my organisation could possibly get the most interaction from.*
+As a *Project manager* I want *to produce a report on all the countries in the world organised by largest population to smallest* so that *I see where my project could possibly get the most interaction from.*
 
 ### Scope
 
@@ -29,7 +29,7 @@ No report is produced.
 
 ### Primary Actor
 
-Employee of an organisation.
+Project manager
 
 ### Trigger
 
@@ -38,9 +38,9 @@ A request for population information is sent to HR.
 ## MAIN SUCCESS SCENARIO
 
 1. Someone request population information for the whole world.
-2. Employee of an organisation captures the population data for every country to get population information.
-3. Employee of an organisation sorts the population for each country biggest to smallest.
-4. Employee of an organisation provides population report.
+2. Project manager captures the population data for every country to get population information.
+3. Project manager sorts the population for each country biggest to smallest.
+4. Project manager provides population report.
 
 ## EXTENSIONS
 
