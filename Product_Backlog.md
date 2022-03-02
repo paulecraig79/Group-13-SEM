@@ -19,6 +19,7 @@
  * Code of Conduct defined.
 
 
+
 # 2nd Code Review 
 * Issues being used on GitHub.
 
@@ -33,3 +34,36 @@
 * Full use cases defined.
 
 * Use case diagram created.
+
+
+
+# 3rd Code Review
+* Suitable unit tests defined.
+
+* Suitable integration tests defined.
+
+* Tests running on GitHub Actions.
+
+
+
+# 4th Code Review
+* Deployment working.
+
+* Bug reporting system set-up.
+
+
+
+# Final Round
+* Metrics from GitHub. Also used to assess individual contribution.
+
+* Code quality including comments.
+
+* Correct usage of branches.
+
+* Continuous integration working.
+
+* Kanban/Project Board being used.
+
+* Quality and coverage of unit tests.
+
+* Project requirements met.
