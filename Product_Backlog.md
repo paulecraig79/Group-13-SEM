@@ -17,3 +17,20 @@
  * First release created on GitHub.
  
  * Code of Conduct defined.
+
+
+# 2nd Code Review 
+*Issues being used on GitHub.
+
+
+*Tasks defined as user stories.
+
+*Project integrated with Zube.io.
+
+*Kanban/Project Board being used.
+
+*Sprint Boards being used.
+
+*Full use cases defined.
+
+*Use case diagram created.
