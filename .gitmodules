@@ -1,0 +1,3 @@
+[submodule "db/world"]
+	path = db/world
+	url = https://github.com/paulecraig79/world
