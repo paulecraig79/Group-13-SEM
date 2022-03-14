@@ -18,6 +18,8 @@ public class App
 
         a.printCountries(countries);
 
+        ArrayList<City> cities = a.getTopCitiesInContinent("Asia", 10);
+
 
         // Disconnect from database
         a.disconnect();
@@ -122,6 +124,40 @@ public class App
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Didn't manage to get country details");
+            return null;
+        }
+    }
+
+    //The top N populated cities in a continent where N is provided by the user.
+    public ArrayList<City> getTopCitiesInContinent(String continent, int limit)
+    {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, country.name AS country, district, city.population" +
+            "FROM city JOIN country ON (code = city.countrycode)" +
+            "WHERE continent = " + continent +
+            "ORDER BY population DESC" +
+            "LIMIT = " + limit;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("population");
+                cities.add(city1);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get city details");
             return null;
         }
     }
