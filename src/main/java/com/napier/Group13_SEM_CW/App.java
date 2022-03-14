@@ -15,8 +15,6 @@ public class App
         // Connect to database
         a.connect();
 
-        a.printContinents();
-
         // Disconnect from database
         a.disconnect();
 
@@ -87,29 +85,4 @@ public class App
                 }
             }
         }
-
-    /**
-     *  The top N populated cities in a continent where N is provided by the user. Use case 10.
-     */
-    public void printContinents()
-    {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            //String strSelect =
-            //      "SELECT emp_no, first_name, last_name "
-            //            + "FROM employees "
-            //          + "WHERE emp_no = " + ID;
-            String strSelect =
-                    "SElECT * "
-                            + "FROM country";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
