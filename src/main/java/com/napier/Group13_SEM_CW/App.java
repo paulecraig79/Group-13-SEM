@@ -2,8 +2,7 @@ package com.napier.Group13_SEM_CW;
 
 
 import java.sql.*;
-
-
+import java.util.ArrayList;
 
 public class App
 {
@@ -15,7 +14,10 @@ public class App
         // Connect to database
         a.connect();
 
-        a.printContinents();
+        ArrayList<Country> countries = a.displayCountries();
+
+        a.printCountries(countries);
+
 
         // Disconnect from database
         a.disconnect();
@@ -89,27 +91,65 @@ public class App
         }
 
     /**
-     *  The top N populated cities in a continent where N is provided by the user. Use case 10.
+     *  Input various contents of the country table into an array that can be printed later.
+     *
+     * @return A list of countries with the contents specified.
      */
-    public void printContinents()
+    public ArrayList<Country> displayCountries()
     {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            //String strSelect =
-            //      "SELECT emp_no, first_name, last_name "
-            //            + "FROM employees "
-            //          + "WHERE emp_no = " + ID;
             String strSelect =
-                    "SElECT * "
+                              "SElECT * "
                             + "FROM country";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return city if valid.
-            // Check one is returned
-        } catch (SQLException e) {
-            e.printStackTrace();
+            // Check one is returned.
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next()) {
+                Country country1 = new Country();
+                country1.name = rset.getString("country.Name");
+                country1.capital = rset.getInt("country.Capital");
+                country1.code = rset.getString("country.Code");
+                country1.continent = rset.getString("country.Continent");
+                country1.life_expectancy = rset.getInt("country.LifeExpectancy");
+                countries.add(country1);
+            }
+            return countries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * Prints the contents specified of a list of countries.
+     *
+     * @param countries
+     */
+    public void printCountries(ArrayList<Country> countries)
+    {
+        // Check countries is not null
+        if (countries == null)
+        {
+            System.out.println("No countries");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-10s %-15s %-20s %-8s %-20s", "capital", "code", "continent", "life expectancy", "name"));
+        // Loop over all countries in the list
+        for (Country country : countries)
+        {
+            if (country == null)
+                continue;
+            String emp_string =
+                    String.format("%-10s %-15s %-20s %-8s",
+                            country.capital, country.code, country.continent, country.life_expectancy, country.name);
+            System.out.println(emp_string);
         }
     }
 }
