@@ -26,8 +26,13 @@ public class App
 
         ArrayList<City> cities4 = a.getTopCitiesInDistrict("England", 12);
 
-        a.printCities(cities4);
+        ArrayList<City> capitals14 = a.getCapitalsInWorld();
 
+        ArrayList<City> capitals15 = a.getCapitalsInContinent("Asia");
+
+        a.printCapitals(capitals15);
+
+        a.printCities(cities4);
 
         // Disconnect from database
         a.disconnect();
@@ -99,42 +104,6 @@ public class App
                 }
             }
         }
-
-    /**
-     *  Input various contents of the country table into an array that can be printed later.
-     *
-     * @return A list of countries with the contents specified.
-     */
-    public ArrayList<Country> displayCountries()
-    {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                              "SElECT * "
-                            + "FROM country";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<Country> countries = new ArrayList<>();
-            while (rset.next()) {
-                Country country1 = new Country();
-                country1.name = rset.getString("country.Name");
-                country1.capital = rset.getInt("country.Capital");
-                country1.code = rset.getString("country.Code");
-                country1.continent = rset.getString("country.Continent");
-                country1.life_expectancy = rset.getInt("country.LifeExpectancy");
-                countries.add(country1);
-            }
-            return countries;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Didn't manage to get country details");
-            return null;
-        }
-    }
 
     /** Use case 10. Gets the top N populated cities in a continent where N is provided by the user.
      *
@@ -292,6 +261,75 @@ public class App
         }
     }
 
+    /** Use case 14. Gets all capital cities in the world by organised from largest to smallest
+     *
+     * @return An array list of the capital cities in the world in order of desceding population.
+     **/
+    public ArrayList<City> getCapitalsInWorld()
+    {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            " ORDER BY population DESC;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> capitals = new ArrayList<>();
+            while (rset.next()) {
+                City capital1 = new City();
+                capital1.name = rset.getString("city.name");
+                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.population = rset.getInt("city.population");
+                capitals.add(capital1);
+            }
+            return capitals;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get capital city details");
+            return null;
+        }
+    }
+
+    /** Use case 15. Gets all capital cities in a continent define by user organised from largest to smallest
+     *
+     * @return An array list of the capital cities in the world in order of descending population.
+     **/
+    public ArrayList<City> getCapitalsInContinent(String continent)
+    {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            "WHERE continent = '" + continent + "'" +
+                            " ORDER BY population DESC;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> capitals = new ArrayList<>();
+            while (rset.next()) {
+                City capital1 = new City();
+                capital1.name = rset.getString("city.name");
+                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.population = rset.getInt("city.population");
+                capitals.add(capital1);
+            }
+            return capitals;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get capital city details");
+            return null;
+        }
+    }
+
     /**
      * Prints the contents specified of a list of countries.
      *
@@ -306,42 +344,42 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-20s %-3s %-20s %-8s", "name", "country code", "district", "population"));
+        System.out.println(String.format("%-30s %-14s %-20s %-8s", "name", "country code", "district", "population"));
         // Loop over all countries in the list
         for (City city : cities)
         {
             if (city == null)
                 continue;
             String emp_string =
-                    String.format("%-20s %-13s %-20s %-8s",
+                    String.format("%-30s %-14s %-20s %-8s",
                             city.name, city.countrycode, city.district, city.population);
             System.out.println(emp_string);
         }
     }
 
     /**
-     * Prints the contents specified of a list of countries.
+     * Prints the contents specified of a list of capital cities.
      *
-     * @param countries
+     * @param capitals
      */
-    public void printCountries(ArrayList<Country> countries)
+    public void printCapitals(ArrayList<City> capitals)
     {
-        // Check countries is not null
-        if (countries == null)
+        // Check cities is not null
+        if (capitals == null)
         {
-            System.out.println("No countries");
+            System.out.println("No cities");
             return;
         }
         // Print header
-        System.out.println(String.format("%-10s %-15s %-20s %-8s %-20s", "capital", "code", "continent", "life expectancy", "name"));
+        System.out.println(String.format("%-30s %-14s %-20s", "name", "country code", "population"));
         // Loop over all countries in the list
-        for (Country country : countries)
+        for (City capital : capitals)
         {
-            if (country == null)
+            if (capital == null)
                 continue;
             String emp_string =
-                    String.format("%-10s %-15s %-20s %-8s",
-                            country.capital, country.code, country.continent, country.life_expectancy, country.name);
+                    String.format("%-30s %-14s %-20s",
+                            capital.name, capital.countrycode, capital.population);
             System.out.println(emp_string);
         }
     }
