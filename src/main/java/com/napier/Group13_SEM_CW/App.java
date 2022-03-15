@@ -24,7 +24,9 @@ public class App
 
         ArrayList<City> cities3 = a.getTopCitiesInCountry("United Kingdom", 10);
 
-        a.printCities(cities3);
+        ArrayList<City> cities4 = a.getTopCitiesInDistrict("England", 12);
+
+        a.printCities(cities4);
 
 
         // Disconnect from database
@@ -235,6 +237,45 @@ public class App
             // Return city if valid.
             // Check one is returned.
             ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("city.countrycode");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get city details");
+            return null;
+        }
+    }
+
+    /** Use case 13. Gets the top N populated cities in a district where N is provided by the user.
+     *
+     * @param district
+     * @param limit
+     * @return An array list of the N most populated cities in a district.
+     */
+    public ArrayList<City> getTopCitiesInDistrict(String district, int limit)
+    {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, district, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            "WHERE district = '" + district + "'" +
+                            " ORDER BY population DESC " +
+                            " LIMIT " + limit + ";";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city1 = new City();
                 city1.name = rset.getString("city.name");
