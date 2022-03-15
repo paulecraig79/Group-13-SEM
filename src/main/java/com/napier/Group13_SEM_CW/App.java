@@ -18,7 +18,9 @@ public class App
 
         //a.printCountries(countries);
 
-        ArrayList<City> cities = a.getTopCitiesInContinent("Asia", 10);
+        //ArrayList<City> cities = a.getTopCitiesInContinent("Asia", 10);
+
+        ArrayList<City> cities = a.getTopCitiesInRegion("Southeast Asia", 10);
 
         a.printCities(cities);
 
@@ -153,6 +155,45 @@ public class App
             // Return city if valid.
             // Check one is returned.
             ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("city.countrycode");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get city details");
+            return null;
+        }
+    }
+
+    /** Use case 11. Gets the top N populated cities in a region where N is provided by the user.
+     *
+     * @param region
+     * @param limit
+     * @return An array list of the N most populated cities in a region.
+     */
+    public ArrayList<City> getTopCitiesInRegion(String region, int limit)
+    {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, district, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            "WHERE region = '" + region + "'" +
+                            " ORDER BY population DESC " +
+                            " LIMIT " + limit + ";";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city1 = new City();
                 city1.name = rset.getString("city.name");
