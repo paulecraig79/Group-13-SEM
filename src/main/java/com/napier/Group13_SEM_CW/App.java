@@ -30,9 +30,11 @@ public class App
 
         ArrayList<City> capitals15 = a.getCapitalsInContinent("Asia");
 
-        a.printCapitals(capitals15);
+        ArrayList<City> capitals16 = a.getCapitalsInRegion("Southeast Asia");
 
-        a.printCities(cities4);
+        a.printCapitals(capitals16);
+
+        //a.printCities(cities4);
 
         // Disconnect from database
         a.disconnect();
@@ -133,7 +135,7 @@ public class App
                 city1.name = rset.getString("city.name");
                 city1.countrycode = rset.getString("city.countrycode");
                 city1.district = rset.getString("district");
-                city1.population = rset.getInt("city.population");
+                city1.population = rset.getInt( "city.population");
                 cities.add(city1);
             }
             return cities;
@@ -309,6 +311,41 @@ public class App
                     "SELECT city.name, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             "WHERE continent = '" + continent + "'" +
+                            " ORDER BY population DESC;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> capitals = new ArrayList<>();
+            while (rset.next()) {
+                City capital1 = new City();
+                capital1.name = rset.getString("city.name");
+                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.population = rset.getInt("city.population");
+                capitals.add(capital1);
+            }
+            return capitals;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get capital city details");
+            return null;
+        }
+    }
+
+    /** Use case 16. Gets all capital cities in a region defined by user organised from largest to smallest
+     *
+     * @return An array list of the capital cities in the region in order of descending population.
+     **/
+    public ArrayList<City> getCapitalsInRegion(String region)
+    {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            "WHERE region = '" + region + "'" +
                             " ORDER BY population DESC;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
