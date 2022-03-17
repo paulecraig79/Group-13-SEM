@@ -36,7 +36,7 @@ public class App
 
         ArrayList<City> capitals16 = a.getCapitalsInRegion("Southeast Asia");
 
-        a.printCapitals(capitals16);
+        a.printCapitals(cities2);
 
         //a.printCities(cities4);
 
@@ -98,7 +98,7 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.countrycode, district, city.population " +
+                    "SELECT city.name, country.name AS country, district, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             "WHERE region = '" + region + "'" +
                             " ORDER BY population DESC " +
@@ -111,7 +111,7 @@ public class App
             while (rset.next()) {
                 City city1 = new City();
                 city1.name = rset.getString("city.name");
-                city1.countrycode = rset.getString("city.countrycode");
+                city1.countrycode = rset.getString("country");
                 city1.district = rset.getString("district");
                 city1.population = rset.getInt("city.population");
                 cities.add(city1);
@@ -320,7 +320,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-14s %-20s %-8s", "name", "country code", "district", "population"));
+        System.out.println(String.format("%-30s %-14s %-20s %-8s", "name", "country", "district", "population"));
         // Loop over all countries in the list
         for (City city : cities)
         {
