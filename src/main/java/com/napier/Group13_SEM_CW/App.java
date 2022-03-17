@@ -1,6 +1,7 @@
 package com.napier.Group13_SEM_CW;
 
 import com.napier.Group13_SEM_CW.database.Connections;
+import com.napier.Group13_SEM_CW.reports.Cities;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -22,21 +23,15 @@ public class App
 
         //a.printCountries(countries);
 
-        ArrayList<City> cities = a.getTopCitiesInContinent("Asia", 10);
+        Cities city = new Cities();
 
-        ArrayList<City> cities2 = a.getTopCitiesInRegion("Southeast Asia", 10);
+        //ArrayList<City> cities10 = city.getTopCitiesInContinent("Asia", 10, con);
 
-        ArrayList<City> cities3 = a.getTopCitiesInCountry("United Kingdom", 10);
+        ArrayList<City> cities11 = city.getTopCitiesInRegion("Southeast Asia", 10, con);
 
-        ArrayList<City> cities4 = a.getTopCitiesInDistrict("England", 12);
+        a.printCities(cities11);
 
-        ArrayList<City> capitals14 = a.getCapitalsInWorld();
-
-        ArrayList<City> capitals15 = a.getCapitalsInContinent("Asia");
-
-        ArrayList<City> capitals16 = a.getCapitalsInRegion("Southeast Asia");
-
-        a.printCapitals(cities2);
+        //a.printCapitals(cities2);
 
         //a.printCities(cities4);
 
@@ -46,83 +41,44 @@ public class App
 
     }
 
-    /** Use case 10. Gets the top N populated cities in a continent where N is provided by the user.
-     *
-     * @param continent
-     * @param limit
-     * @return An array list of the N most populated cities in a continent.
-     */
-    public ArrayList<City> getTopCitiesInContinent(String continent, int limit)
-    {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                "SELECT city.name, country.name AS country, district, city.population " +
-                "FROM city JOIN country ON (code = city.countrycode) " +
-                "WHERE continent = '" + continent + "'" +
-                " ORDER BY population DESC " +
-                " LIMIT " + limit + ";";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next()) {
-                City city1 = new City();
-                city1.name = rset.getString("city.name");
-                city1.countrycode = rset.getString("country");
-                city1.district = rset.getString("district");
-                city1.population = rset.getInt( "city.population");
-                cities.add(city1);
-            }
-            return cities;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Didn't manage to get city details");
-            return null;
-        }
-    }
-
     /** Use case 11. Gets the top N populated cities in a region where N is provided by the user.
      *
      * @param region
      * @param limit
      * @return An array list of the N most populated cities in a region.
      */
-    public ArrayList<City> getTopCitiesInRegion(String region, int limit)
-    {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.name, country.name AS country, district, city.population " +
-                            "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE region = '" + region + "'" +
-                            " ORDER BY population DESC " +
-                            " LIMIT " + limit + ";";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<City> cities = new ArrayList<>();
-            while (rset.next()) {
-                City city1 = new City();
-                city1.name = rset.getString("city.name");
-                city1.countrycode = rset.getString("country");
-                city1.district = rset.getString("district");
-                city1.population = rset.getInt("city.population");
-                cities.add(city1);
-            }
-            return cities;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Didn't manage to get city details");
-            return null;
-        }
-    }
+//    public ArrayList<City> getTopCitiesInRegion(String region, int limit)
+//    {
+//        try {
+//            // Create an SQL statement
+//            Statement stmt = con.createStatement();
+//            // Create string for SQL statement
+//            String strSelect =
+//                    "SELECT city.name, country.name AS country, district, city.population " +
+//                            "FROM city JOIN country ON (code = city.countrycode) " +
+//                            "WHERE region = '" + region + "'" +
+//                            " ORDER BY population DESC " +
+//                            " LIMIT " + limit + ";";
+//            // Execute SQL statement
+//            ResultSet rset = stmt.executeQuery(strSelect);
+//            // Return city if valid.
+//            // Check one is returned.
+//            ArrayList<City> cities = new ArrayList<>();
+//            while (rset.next()) {
+//                City city1 = new City();
+//                city1.name = rset.getString("city.name");
+//                city1.countrycode = rset.getString("country");
+//                city1.district = rset.getString("district");
+//                city1.population = rset.getInt("city.population");
+//                cities.add(city1);
+//            }
+//            return cities;
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            System.out.println("Didn't manage to get city details");
+//            return null;
+//        }
+//    }
 
     /** Use case 12. Gets the top N populated cities in a country where N is provided by the user.
      *
