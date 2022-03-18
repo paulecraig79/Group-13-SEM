@@ -3,6 +3,7 @@ package com.napier.Group13_SEM_CW;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class App
@@ -15,15 +16,15 @@ public class App
         // Connect to database
         a.connect();
 
-        //ArrayList<City> capitals = a.topPopulatedCapitalsInWorld();
+        ArrayList<City> capitals = a.topPopulatedCapitalsInWorld();
 
         //ArrayList<City> city = a.livingInCityLivingOutCity();
 
         //ArrayList<City> cities = a.topPopulatedCapitalsInContinent();
 
-        //a.printCities(capitals);
+        a.printCities(capitals);
 
-       // a.printCapitals(city);
+        //a.printCapitals(cities);
 
         // Disconnect from database
         a.disconnect();
@@ -58,9 +59,9 @@ public class App
                 try
                 {
                     // Wait a bit for db to start
-                    Thread.sleep(30000);
+                    Thread.sleep(0);
                     // Connect to database
-                    con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                    con = DriverManager.getConnection("jdbc:mysql://loalhost:33060/world?useSSL=false", "root", "example");
                     System.out.println("Successfully connected");
                     break;
                 }
@@ -97,20 +98,26 @@ public class App
         }
 
 
-    /** Use case 17. Gets all capital cities in the world by organised from largest to smallest
+    /** Use case 17. The top N populated capital cities in the world where N is provided by the user.
      *
      * @return An array list of the capital cities in the world in order of desceding population.
      **/
     public ArrayList<City> topPopulatedCapitalsInWorld()
     {
+
         try {
+            /*Scanner input = new Scanner(System.in);
+
+            System.out.print("Enter an integer: ");
+            int number = input.nextInt();*/
+
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
                     "SELECT city.name, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            " ORDER BY population DESC LIMIT 10;";
+                            " ORDER BY population DESC LIMIT 5;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return city if valid.
