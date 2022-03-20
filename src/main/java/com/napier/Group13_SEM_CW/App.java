@@ -10,8 +10,7 @@ public class App
 {
     private static Connection con = null;
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws SQLException {
         // Create new Application
         App a = new App();
 

@@ -52,5 +52,7 @@ public class CapitalsTest
         capitals.add(capital1);
         capital.printCapitals(capitals);
     }
+
+
 }
 
