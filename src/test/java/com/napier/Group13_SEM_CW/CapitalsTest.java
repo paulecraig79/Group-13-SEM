@@ -1,10 +1,14 @@
 package com.napier.Group13_SEM_CW;
 
+import com.napier.Group13_SEM_CW.database.Connections;
 import com.napier.Group13_SEM_CW.reports.Capitals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CapitalsTest
 {
     static Capitals capital;
+
+    Connections c = new Connections();
+
+    Connection con = c.connect();
 
     @BeforeAll
     static void init()
@@ -51,6 +59,12 @@ public class CapitalsTest
         capital1.population = 67894979;
         capitals.add(capital1);
         capital.printCapitals(capitals);
+    }
+
+    @Test
+    void getCapitalsArrayList() throws SQLException {
+        ResultSet rset = capital.getCapitalsInWorld(con);
+        capital.getCapitalsArrayList(rset, con);
     }
 
 
