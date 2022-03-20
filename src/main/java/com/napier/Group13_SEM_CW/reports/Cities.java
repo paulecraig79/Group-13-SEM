@@ -1,6 +1,8 @@
 package com.napier.Group13_SEM_CW.reports;
 
 import com.napier.Group13_SEM_CW.City;
+
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -10,9 +12,9 @@ public class Cities {
      *
      * @param continent
      * @param limit
-     * @return An array list of the N most populated cities in a continent.
+     * @return A result set of the N most populated cities in a continent.
      */
-    public ArrayList<City> getTopCitiesInContinent(String continent, int limit, Connection con)
+    public ResultSet getTopCitiesInContinent(String continent, int limit, Connection con)
     {
         try {
             // Create an SQL statement
@@ -25,20 +27,10 @@ public class Cities {
                             " ORDER BY population DESC " +
                             " LIMIT " + limit + ";";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next()) {
-                City city1 = new City();
-                city1.name = rset.getString("city.name");
-                city1.countrycode = rset.getString("country");
-                city1.district = rset.getString("district");
-                city1.population = rset.getInt( "city.population");
-                cities.add(city1);
-            }
-            return cities;
-        } catch (Exception e) {
+            //return result set if valid
+            return stmt.executeQuery(strSelect);
+        } catch (Exception e)
+        {
             System.out.println(e.getMessage());
             System.out.println("Didn't manage to get city details");
             return null;
@@ -49,9 +41,9 @@ public class Cities {
      *
      * @param region
      * @param limit
-     * @return An array list of the N most populated cities in a region.
+     * @return A result set of the N most populated cities in a region.
      */
-    public ArrayList<City> getTopCitiesInRegion(String region, int limit, Connection con)
+    public ResultSet getTopCitiesInRegion(String region, int limit, Connection con)
     {
         try {
             // Create an SQL statement
@@ -64,19 +56,7 @@ public class Cities {
                             " ORDER BY population DESC " +
                             " LIMIT " + limit + ";";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<City> cities = new ArrayList<>();
-            while (rset.next()) {
-                City city1 = new City();
-                city1.name = rset.getString("city.name");
-                city1.countrycode = rset.getString("country");
-                city1.district = rset.getString("district");
-                city1.population = rset.getInt("city.population");
-                cities.add(city1);
-            }
-            return cities;
+            return(stmt.executeQuery(strSelect));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Didn't manage to get city details");
@@ -88,9 +68,9 @@ public class Cities {
      *
      * @param country
      * @param limit
-     * @return An array list of the N most populated cities in a country.
+     * @return A result set of the N most populated cities in a country.
      */
-    public ArrayList<City> getTopCitiesInCountry(String country, int limit, Connection con)
+    public ResultSet getTopCitiesInCountry(String country, int limit, Connection con)
     {
         try {
             // Create an SQL statement
@@ -103,19 +83,8 @@ public class Cities {
                             " ORDER BY population DESC " +
                             " LIMIT " + limit + ";";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next()) {
-                City city1 = new City();
-                city1.name = rset.getString("city.name");
-                city1.countrycode = rset.getString("country");
-                city1.district = rset.getString("district");
-                city1.population = rset.getInt("city.population");
-                cities.add(city1);
-            }
-            return cities;
+            //return result set if valid.
+            return(stmt.executeQuery(strSelect));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Didn't manage to get city details");
@@ -127,9 +96,9 @@ public class Cities {
      *
      * @param district
      * @param limit
-     * @return An array list of the N most populated cities in a district.
+     * @return A result set of the N most populated cities in a district.
      */
-    public ArrayList<City> getTopCitiesInDistrict(String district, int limit, Connection con)
+    public ResultSet getTopCitiesInDistrict(String district, int limit, Connection con)
     {
         try {
             // Create an SQL statement
@@ -142,24 +111,32 @@ public class Cities {
                             " ORDER BY population DESC " +
                             " LIMIT " + limit + ";";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<City> cities = new ArrayList<>();
-            while (rset.next()) {
-                City city1 = new City();
-                city1.name = rset.getString("city.name");
-                city1.countrycode = rset.getString("country");
-                city1.district = rset.getString("district");
-                city1.population = rset.getInt("city.population");
-                cities.add(city1);
-            }
-            return cities;
+            // Return result set if valid.
+            return(stmt.executeQuery(strSelect));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Didn't manage to get city details");
             return null;
         }
+    }
+
+    /** Takes the resultant SQL statements and inputs them into an ArrayList.
+     *
+     * @param rset A set of results provided by an SQL query.
+     * @param con A connection to the world database.
+     * @return A result set of cities containing the required information columns.
+     */
+    public ArrayList<City> getCitiesArrayList(ResultSet rset, Connection con) throws SQLException {
+        ArrayList<City> cities = new ArrayList<City>();
+        while (rset.next()) {
+            City city1 = new City();
+            city1.name = rset.getString("city.name");
+            city1.countrycode = rset.getString("country");
+            city1.district = rset.getString("district");
+            city1.population = rset.getInt("city.population");
+            cities.add(city1);
+        }
+        return cities;
     }
 
     /**

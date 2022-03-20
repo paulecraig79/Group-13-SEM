@@ -66,7 +66,5 @@ public class CapitalsTest
         ResultSet rset = capital.getCapitalsInWorld(con);
         capital.getCapitalsArrayList(rset, con);
     }
-
-
 }
 
