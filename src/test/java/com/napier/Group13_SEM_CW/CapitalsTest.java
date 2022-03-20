@@ -17,9 +17,9 @@ public class CapitalsTest
 {
     static Capitals capital;
 
-    Connections c = new Connections();
-
-    Connection con = c.connect();
+//    Connections c = new Connections();
+//
+//    Connection con = c.connect();
 
     @BeforeAll
     static void init()
@@ -61,10 +61,10 @@ public class CapitalsTest
         capital.printCapitals(capitals);
     }
 
-    @Test
-    void getCapitalsArrayList() throws SQLException {
-        ResultSet rset = capital.getCapitalsInWorld(con);
-        capital.getCapitalsArrayList(rset, con);
-    }
+//    @Test
+//    void getCapitalsArrayList() throws SQLException {
+//        ResultSet rset = capital.getCapitalsInWorld(con);
+//        capital.getCapitalsArrayList(rset, con);
+//    }
 }
 
