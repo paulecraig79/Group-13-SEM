@@ -12,8 +12,7 @@ public class App
 {
     private static Connection con = null;
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws SQLException {
         // Create new Application
         App a = new App();
 
@@ -23,7 +22,9 @@ public class App
         con = c.connect();
 
         Countries country = new Countries();
-        country.getCountriesInWorld(con);
+        ResultSet z = country.getCountriesInWorld(con);
+        ArrayList<Country> test = country.getCountriesArrayList(z, con);
+        country.printCountries(test);
 
         // Disconnect from database
         c.disconnect();
