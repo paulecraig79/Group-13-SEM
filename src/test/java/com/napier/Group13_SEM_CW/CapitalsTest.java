@@ -13,44 +13,41 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CapitalsTest
-{
+public class CapitalsTest {
     static Capitals capital;
+
+    //Create new app
+    //App testApp = new App();
 
     Connections c = new Connections();
 
     Connection con = c.connect();
 
     @BeforeAll
-    static void init()
-    {
+    static void init() {
         capital = new Capitals();
     }
 
     @Test
-    void printCapitalsTestNull()
-    {
+    void printCapitalsTestNull() {
         capital.printCapitals(null);
     }
 
     @Test
-    void printCapitalsTestEmpty()
-    {
+    void printCapitalsTestEmpty() {
         ArrayList<City> capitals = new ArrayList<>();
         capital.printCapitals(capitals);
     }
 
     @Test
-    void printCapitalsTestsContainsNull()
-    {
+    void printCapitalsTestsContainsNull() {
         ArrayList<City> capitals = new ArrayList<>();
         capitals.add(null);
         capital.printCapitals(capitals);
     }
 
     @Test
-    void printCapitals()
-    {
+    void printCapitals() {
         ArrayList<City> capitals = new ArrayList<>();
         City capital1 = new City();
         capital1.name = "Cario";
@@ -61,10 +58,36 @@ public class CapitalsTest
         capital.printCapitals(capitals);
     }
 
-//    @Test
-//    void getCapitalsArrayList() throws SQLException {
-//        ResultSet rset = capital.getCapitalsInWorld(con);
-//        capital.getCapitalsArrayList(rset, con);
-//    }
+    @Test
+    void getCapitalsArrayList() throws SQLException {
+        ResultSet rset = capital.getCapitalsInWorld(con);
+        capital.getCapitalsArrayList(rset, con);
+    }
+
+    @Test
+    void getCapitalsInWorldTestNullConnection() {
+        capital.getCapitalsInWorld(null);
+    }
+
+    @Test
+    void getCapitalsInContinentTestNullContinent() {
+        capital.getCapitalsInContinent(null, con);
+    }
+
+    @Test
+    void getCapitalsInContinentTestNullConnection() {
+        capital.getCapitalsInContinent("Asia", null);
+    }
+
+    @Test
+    void getCapitalsInRegionTestNullRegion() {
+        capital.getCapitalsInRegion(null, con);
+    }
+
+    @Test
+    void getCapitalsInRegionTestNullConnection(){
+        capital.getCapitalsInRegion("Southeast Asia", null);
+    }
+
 }
 
