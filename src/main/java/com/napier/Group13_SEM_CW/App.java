@@ -155,9 +155,9 @@ public class App
 
             //Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.countrycode, city.population "
+                    "SELECT city.name, country.name AS countrycode, city.district, city.population "
                             + "FROM city JOIN country ON (code = city.countrycode) "
-                            + "WHERE city.ID = capital "
+                            + "WHERE country.name = '" + country + "' "
                             + "ORDER BY population DESC ";
 
             //Execute SQL statement
@@ -169,6 +169,7 @@ public class App
                 City city = new City();
                 city.name = resultSet.getString("name");
                 city.countrycode = resultSet.getString("countrycode");
+                city.district = resultSet.getString("district");
                 city.population = resultSet.getInt("population");
                 cities.add(city);
             }
