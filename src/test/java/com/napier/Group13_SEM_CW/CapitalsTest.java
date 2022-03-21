@@ -17,9 +17,9 @@ public class CapitalsTest
 {
     static Capitals capital;
 
-//    Connections c = new Connections();
-//
-//    Connection con = c.connect();
+    Connections c = new Connections();
+
+    Connection con = c.connect();
 
     @BeforeAll
     static void init()
