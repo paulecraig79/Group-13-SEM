@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Countries {
 
-    /** Use case 1. Gets all countries in order from largest to smallest population
+    /** Use case 3. Gets all countries in order from largest to smallest population
      *
      * @return An array list of the countries in the world in order of descending population.
      **/
@@ -18,7 +18,7 @@ public class Countries {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name " +
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
                             "FROM country JOIN city ON countrycode = country.code " +
                             "WHERE city.ID = capital " +
                             "GROUP BY countrycode " +
@@ -50,7 +50,7 @@ public class Countries {
                 countries1.continent = rset.getString("country.continent");
                 countries1.region = rset.getString("country.region");
                 countries1.population = rset.getInt("country.population");
-                countries1.capital = rset.getInt("city.name");
+                countries1.code2 = rset.getString("capital");
                 countries.add(countries1);
             }
             return countries;
@@ -78,7 +78,7 @@ public class Countries {
                 continue;
             String emp_string =
                     String.format("%-3s %-14s %-14s %-14s %-20s %-6s",
-                            country.code, country.name ,country.continent, country.region, country.population, country.capital);
+                            country.code, country.name ,country.continent, country.region, country.population, country.code2);
             System.out.println(emp_string);
         }
     }
