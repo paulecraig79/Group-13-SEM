@@ -21,10 +21,6 @@ public class App
 
         con = c.connect();
 
-        Countries country = new Countries();
-        ResultSet z = country.getCountriesInWorld(con);
-        ArrayList<Country> test = country.getCountriesArrayList(z, con);
-        country.printCountries(test);
 
         // Disconnect from database
         c.disconnect();
