@@ -17,14 +17,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CitiesTest {
     static Cities city;
+    static Connections c = new Connections();
 
     @BeforeAll
     static void init(){
         city = new Cities();
-        Connections c = new Connections();
         Connection con = c.connect();
     }
 
+    @AfterAll
+    static void disconnect(){
+        c.disconnect();
+    }
 
     @Test
     void printCitiesTestNull(){city.printCities(null);}
