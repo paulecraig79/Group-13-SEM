@@ -85,6 +85,124 @@ public class Capitals {
         }
     }
 
+    /** Use case 17. The top N populated capital cities in the world where N is provided by the user.
+     *
+     * @return An array list of the capital cities in the world in order of desceding population.
+     **/
+    public ArrayList<City> topPopulatedCapitalsInWorld(int number, Connection con)
+    {
+
+        try {
+            /*Scanner input = new Scanner(System.in);
+
+            System.out.print("Enter an integer: ");
+            int number = input.nextInt();*/
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            " ORDER BY population DESC LIMIT '" + number + "'" + ";";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> capitals = new ArrayList<>();
+            while (rset.next()) {
+                City capital1 = new City();
+                capital1.name = rset.getString("city.name");
+                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.population = rset.getInt("city.population");
+                capitals.add(capital1);
+            }
+            return capitals;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get capital city details");
+            return null;
+        }
+    }
+
+    /** Use case 18. The top N populated capital cities in a continent where N is provided by the user.
+     *
+     * @return An array list of the capital cities in the world in order of desceding population.
+     **/
+    public ArrayList<City> topPopulatedCapitalsInContinent(Connection con)
+    {
+
+        try {
+            /*Scanner input = new Scanner(System.in);
+
+            System.out.print("Enter an integer: ");
+            int number = input.nextInt();*/
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            "WHERE continent = 'Africa' " +
+                            " ORDER BY population DESC LIMIT 5;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> capitals = new ArrayList<>();
+            while (rset.next()) {
+                City capital1 = new City();
+                capital1.name = rset.getString("city.name");
+                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.population = rset.getInt("city.population");
+                capitals.add(capital1);
+            }
+            return capitals;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get capital city details");
+            return null;
+        }
+    }
+
+    /** Use case 19. The top N populated capital cities in a region where N is provided by the user.
+     *
+     * @return An array list of the capital cities in the world in order of desceding population.
+     **/
+    public ArrayList<City> topPopulatedCapitalsInRegion(Connection con)
+    {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.countrycode, city.population " +
+                            "FROM city JOIN country ON (code = city.countrycode) " +
+                            "WHERE region = 'British Islands'" +
+                            " ORDER BY population DESC LIMIT 10;";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return city if valid.
+            // Check one is returned.
+            ArrayList<City> capitals = new ArrayList<>();
+            while (rset.next()) {
+                City capital1 = new City();
+                capital1.name = rset.getString("city.name");
+                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.population = rset.getInt("city.population");
+                capitals.add(capital1);
+            }
+            return capitals;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get capital city details");
+            return null;
+        }
+    }
+
+
+
     /** Takes the resultant SQL statements and inputs them into an ArrayList.
      *
      * @param rset A set of results provided by an SQL query.
