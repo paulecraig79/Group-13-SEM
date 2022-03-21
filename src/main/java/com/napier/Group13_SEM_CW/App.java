@@ -2,7 +2,7 @@ package com.napier.Group13_SEM_CW;
 
 
 import java.sql.*;
-
+import java.util.ArrayList;
 
 
 public class App
@@ -14,6 +14,12 @@ public class App
 
         // Connect to database
         a.connect();
+
+        //Extract citi information
+        ArrayList<City> cities = a.TopPopulatedCities();
+
+        //Print cities
+        a.printCities(cities);
 
         // Disconnect from database
         a.disconnect();
@@ -85,4 +91,117 @@ public class App
                 }
             }
         }
+
+    /**
+     * Get city method
+     */
+    public City getCities(int ID){
+        try{
+            //Create an SQL statement
+            Statement statement = con.createStatement();
+
+            //Create string for SQL statement
+            String strSelect =
+                    "SELECT name, countrycode, district, population " +
+                            "FROM city " +
+                            "WHERE name = " + ID;
+
+            //Execute SQL statement
+            ResultSet resultSet = statement.executeQuery(strSelect);
+            //Return new city if valid
+            //Check one is returned
+            if(resultSet.next()){
+                City city = new City();
+                city.name = resultSet.getString("name");
+                city.countrycode = resultSet.getString("countrycode");
+                city.district = resultSet.getString("district");
+                city.population = resultSet.getInt("population");
+                return city;
+            } else
+                return null;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    /**
+     * Display city
+     */
+    public void displayCity(City city){
+        if(city != null){
+            System.out.println(
+                    city.name + " "
+                            + city.countrycode + " "
+                            + city.district + " "
+                            + city.population
+            );
+        }
+    }
+
+    /**
+     * The top N populated cities in the world where N is provided by the user.
+     *
+     * In this case N is 10.
+     */
+    public ArrayList<City> TopPopulatedCities(){
+        try{
+            //Create an SQL statement
+            Statement statement = con.createStatement();
+
+            //Create string for SQL statement
+            String strSelect =
+                    "SELECT name, countrycode, district, population "
+                    + "FROM city "
+                    + "ORDER BY population DESC "
+                    + "LIMIT 10 ";
+            //Execute SQL statement
+            ResultSet resultSet = statement.executeQuery(strSelect);
+
+            //Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+
+            while (resultSet.next()){
+                City city = new City();
+                city.name = resultSet.getString("name");
+                city.district = resultSet.getString("district");
+                city.countrycode = resultSet.getString("countrycode");
+                city.population = resultSet.getInt("population");
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get list of all cities");
+            return null;
+        }
+    }
+
+    /**
+     * Prints the contents specified of a list of countries.
+     *
+     * @param cities
+     */
+    public void printCities(ArrayList<City> cities)
+    {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-14s %-20s %-8s", "name", "country code", "district", "population"));
+        // Loop over all countries in the list
+        for (City city : cities)
+        {
+            if (city == null)
+                continue;
+            String emp_string =
+                    String.format("%-30s %-14s %-20s %-8s",
+                            city.name, city.countrycode, city.district, city.population);
+            System.out.println(emp_string);
+        }
+    }
 }
