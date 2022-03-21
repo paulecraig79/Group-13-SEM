@@ -66,6 +66,18 @@ public class CitiesTest {
         city.getCitiesArrayList(rset, con);
     }
 
+    @Test
+    void getTopCitiesInContinentTestNullConnection(){
+        city.getTopCitiesInContinent("Asia", 10, null);
+    }
+
+    @Test
+    void getTopCitiesInContinentTestNullContinent(){
+        city.getTopCitiesInContinent(null, 10, con);
+    }
+
+
+
 
 
 
