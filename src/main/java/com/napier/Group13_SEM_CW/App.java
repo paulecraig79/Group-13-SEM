@@ -16,7 +16,7 @@ public class App
         a.connect();
 
         //print a list of cities in a continent
-        ArrayList<City> cities = a.getCitiesInRegion("London");
+        ArrayList<City> cities = a.getCitiesInRegion("Southern Europe");
 
         //Print cities
         a.printCities(cities);
@@ -166,7 +166,7 @@ public class App
             while (resultSet.next()){
                 City city = new City();
                 city.name = resultSet.getString("name");
-                city.countrycode = resultSet.getString("country code");
+                city.countrycode = resultSet.getString("countrycode");
                 city.population = resultSet.getInt("population");
                 cities.add(city);
             }
