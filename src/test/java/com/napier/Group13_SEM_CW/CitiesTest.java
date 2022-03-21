@@ -18,11 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CitiesTest {
     static Cities city;
     static Connections c = new Connections();
+    static Connection con;
 
     @BeforeAll
     static void init(){
         city = new Cities();
-        Connection con = c.connect();
+        con = c.connect();
     }
 
     @AfterAll
@@ -58,6 +59,14 @@ public class CitiesTest {
         cities.add(city1);
         city.printCities(cities);
     }
+
+    @Test
+    void getCitiesArrayList() throws SQLException{
+        ResultSet rset = city.getTopCitiesInContinent("Europe", 10, con);
+        city.getCitiesArrayList(rset, con);
+    }
+
+
 
 
 
