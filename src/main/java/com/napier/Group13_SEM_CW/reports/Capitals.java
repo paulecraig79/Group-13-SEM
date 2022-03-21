@@ -87,17 +87,12 @@ public class Capitals {
 
     /** Use case 17. The top N populated capital cities in the world where N is provided by the user.
      *
-     * @return An array list of the capital cities in the world in order of desceding population.
+     * @return An array list of the capital cities in the world in order of descending population.
      **/
     public ArrayList<City> topPopulatedCapitalsInWorld(int number, Connection con)
     {
 
         try {
-            /*Scanner input = new Scanner(System.in);
-
-            System.out.print("Enter an integer: ");
-            int number = input.nextInt();*/
-
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -127,17 +122,12 @@ public class Capitals {
 
     /** Use case 18. The top N populated capital cities in a continent where N is provided by the user.
      *
-     * @return An array list of the capital cities in the world in order of desceding population.
+     * @return An array list of the capital cities in the world in order of descending population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInContinent(Connection con)
+    public ArrayList<City> topPopulatedCapitalsInContinent(int number, Connection con)
     {
 
         try {
-            /*Scanner input = new Scanner(System.in);
-
-            System.out.print("Enter an integer: ");
-            int number = input.nextInt();*/
-
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -145,7 +135,7 @@ public class Capitals {
                     "SELECT city.name, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             "WHERE continent = 'Africa' " +
-                            " ORDER BY population DESC LIMIT 5;";
+                            " ORDER BY population DESC LIMIT '" + number + "'" + ";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return city if valid.
@@ -168,9 +158,9 @@ public class Capitals {
 
     /** Use case 19. The top N populated capital cities in a region where N is provided by the user.
      *
-     * @return An array list of the capital cities in the world in order of desceding population.
+     * @return An array list of the capital cities in the world in order of descending population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInRegion(Connection con)
+    public ArrayList<City> topPopulatedCapitalsInRegion(int number, Connection con)
     {
         try {
             // Create an SQL statement
@@ -180,7 +170,7 @@ public class Capitals {
                     "SELECT city.name, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             "WHERE region = 'British Islands'" +
-                            " ORDER BY population DESC LIMIT 10;";
+                            " ORDER BY population DESC LIMIT '" + number + "'" + ";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return city if valid.
