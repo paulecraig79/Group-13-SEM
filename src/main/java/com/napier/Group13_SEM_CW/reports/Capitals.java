@@ -93,11 +93,6 @@ public class Capitals {
     {
 
         try {
-            /*Scanner input = new Scanner(System.in);
-
-            System.out.print("Enter an integer: ");
-            int number = input.nextInt();*/
-
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -129,7 +124,7 @@ public class Capitals {
      *
      * @return An array list of the capital cities in the world in order of desceding population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInContinent(Connection con)
+    public ArrayList<City> topPopulatedCapitalsInContinent(int number, Connection con)
     {
 
         try {
@@ -145,7 +140,7 @@ public class Capitals {
                     "SELECT city.name, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             "WHERE continent = 'Africa' " +
-                            " ORDER BY population DESC LIMIT 5;";
+                            " ORDER BY population DESC LIMIT '" + number + "'" + ";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return city if valid.
@@ -170,7 +165,7 @@ public class Capitals {
      *
      * @return An array list of the capital cities in the world in order of desceding population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInRegion(Connection con)
+    public ArrayList<City> topPopulatedCapitalsInRegion(int number, Connection con)
     {
         try {
             // Create an SQL statement
@@ -180,7 +175,7 @@ public class Capitals {
                     "SELECT city.name, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             "WHERE region = 'British Islands'" +
-                            " ORDER BY population DESC LIMIT 10;";
+                            " ORDER BY population DESC LIMIT '" + number + "'" + ";";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return city if valid.
