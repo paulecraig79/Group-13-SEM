@@ -22,34 +22,30 @@ public class CapitalTest17 {
     static Connection con;
 
     @BeforeAll
-    static void init()
-    {
+    static void init() {
         capitals = new Capitals();
         con = c.connect();
     }
 
 
     @AfterAll
-    static void disconnect()
-    {
+    static void disconnect() {
         c.disconnect();
     }
 
     @Test
-    void topPopulatedCapitalsInWorldTestEmpty()
-    {
+    void topPopulatedCapitalsInWorldTestEmpty() {
         capitals.topPopulatedCapitalsInWorld(null, con);
     }
 
     @Test
-    void topPopulatedCapitalsInWorldTestNull()
-    {
+    void topPopulatedCapitalsInWorldTestNull() {
         capitals.topPopulatedCapitalsInWorld(0, null);
     }
 
     @Test
-    void topPopulatedCapitalsInWorldTest()
-    {
+    void topPopulatedCapitalsInWorldTest() {
         capitals.topPopulatedCapitalsInWorld(5, con);
     }
+
 }
