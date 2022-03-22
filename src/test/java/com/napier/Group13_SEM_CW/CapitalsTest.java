@@ -17,12 +17,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CapitalsTest {
     static Capitals capital;
     static Connections c = new Connections();
-    static Connection con;
 
     @BeforeAll
     static void init(){
         capital = new Capitals();
-        con = c.connect();
+//        con = c.connect();
     }
 
     @AfterAll
@@ -62,9 +61,11 @@ public class CapitalsTest {
 
     @Test
     void getCapitalsArrayList() throws SQLException {
+        Connection con = c.connect();
         ResultSet rset;
         rset = capital.getCapitalsInWorld(con);
-        //capital.getCapitalsArrayList(rset, con);
+        capital.getCapitalsArrayList(rset, con);
+        c.disconnect();
     }
 
     @Test
@@ -72,25 +73,25 @@ public class CapitalsTest {
         capital.getCapitalsInWorld(null);
     }
 
-    @Test
-    void getCapitalsInContinentTestNullContinent() {
-        capital.getCapitalsInContinent(null, con);
-    }
+//    @Test
+//    void getCapitalsInContinentTestNullContinent() {
+//        capital.getCapitalsInContinent(null, con);
+//    }
+//
+//    @Test
+//    void getCapitalsInContinentTestNullConnection() {
+//        capital.getCapitalsInContinent("Asia", null);
+//    }
 
-    @Test
-    void getCapitalsInContinentTestNullConnection() {
-        capital.getCapitalsInContinent("Asia", null);
-    }
-
-    @Test
-    void getCapitalsInRegionTestNullRegion() {
-        capital.getCapitalsInRegion(null, con);
-    }
-
-    @Test
-    void getCapitalsInRegionTestNullConnection(){
-        capital.getCapitalsInRegion("Southeast Asia", null);
-    }
+//    @Test
+//    void getCapitalsInRegionTestNullRegion() {
+//        capital.getCapitalsInRegion(null, con);
+//    }
+//
+//    @Test
+//    void getCapitalsInRegionTestNullConnection(){
+//        capital.getCapitalsInRegion("Southeast Asia", null);
+//    }
 
 }
 
