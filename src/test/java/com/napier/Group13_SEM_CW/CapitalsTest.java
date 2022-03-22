@@ -64,7 +64,7 @@ public class CapitalsTest {
     void getCapitalsArrayList() throws SQLException {
         ResultSet rset;
         rset = capital.getCapitalsInWorld(con);
-        capital.getCapitalsArrayList(rset, con);
+        //capital.getCapitalsArrayList(rset, con);
     }
 
     @Test

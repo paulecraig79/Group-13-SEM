@@ -22,6 +22,5 @@ public class App
         // Disconnect from database
         c.disconnect();
 
-
     }
 }
