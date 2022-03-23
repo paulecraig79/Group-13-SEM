@@ -17,11 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CapitalsTest {
     static Capitals capital;
     static Connections c = new Connections();
+    static Connection con;
 
     @BeforeAll
     static void init(){
         capital = new Capitals();
-//        con = c.connect();
+        con = c.connect();
     }
 
     @AfterAll
@@ -60,12 +61,17 @@ public class CapitalsTest {
     }
 
     @Test
-    void getCapitalsArrayList() throws SQLException {
-        Connection con = c.connect();
-        ResultSet rset;
-        rset = capital.getCapitalsInWorld(con);
-        capital.getCapitalsArrayList(rset, con);
-        c.disconnect();
+    void getCapitalsArrayList() throws SQLException  {
+        try {
+            ResultSet rset;
+            rset = capital.getCapitalsInWorld(con);
+            ArrayList<City> capitals = capital.getCapitalsArrayList(rset);
+
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 
     @Test

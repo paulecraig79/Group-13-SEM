@@ -206,10 +206,9 @@ public class Capitals {
     /** Takes the resultant SQL statements and inputs them into an ArrayList.
      *
      * @param rset A set of results provided by an SQL query.
-     * @param con A connection to the world database.
      * @return An Array List of capitals containing the required information columns.
      */
-    public ArrayList<City> getCapitalsArrayList(ResultSet rset, Connection con) throws SQLException {
+    public ArrayList<City> getCapitalsArrayList(ResultSet rset) throws SQLException {
         ArrayList<City> capitals = new ArrayList<>();
         while (rset.next()) {
             City capital1 = new City();
