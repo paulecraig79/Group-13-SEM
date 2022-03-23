@@ -105,7 +105,7 @@ public class CapitalsTest {
 
 
 
-
+    //unit tests for use case 17
     @Test
     void topPopulatedCapitalsInWorldTestEmpty()
     {
@@ -136,6 +136,14 @@ public class CapitalsTest {
             System.out.println(e);
         }
     }
+
+    //unit tests for use case 18
+    @Test
+    void topPopulatedCapitalsInContinentTestEmpty()
+    {
+        capital.topPopulatedCapitalsInContinent(0, con);
+    }
+
     @Test
     void topPopulatedCapitalsInContinentTestNullConnection()
     {
@@ -161,6 +169,7 @@ public class CapitalsTest {
         }
     }
 
+    //unit tests for use case 19
     @Test
     void topPopulatedCapitalsInRegionTestEmpty()
     {

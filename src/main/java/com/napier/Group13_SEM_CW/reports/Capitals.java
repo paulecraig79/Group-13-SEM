@@ -87,7 +87,7 @@ public class Capitals {
 
     /** Use case 17. The top N populated capital cities in the world where N is provided by the user.
      *
-     * @return An array list of the capital cities in the world.
+     * @return An array list of the top capital cities in the world.
      **/
     public ArrayList<City> topPopulatedCapitalsInWorld(Integer number, Connection con)
     {
@@ -112,7 +112,7 @@ public class Capitals {
 
     /** Use case 18. The top N populated capital cities in a continent where N is provided by the user.
      *
-     * @return An array list of the capital cities in the world.
+     * @return An array list of the top capital cities in the continent.
      **/
     public ArrayList<City> topPopulatedCapitalsInContinent(Integer number, Connection con)
     {
@@ -138,7 +138,7 @@ public class Capitals {
 
     /** Use case 19. The top N populated capital cities in a region where N is provided by the user.
      *
-     * @return An array list of the capital cities in the world.
+     * @return An array list of the top capital cities in the region.
      **/
     public ArrayList<City> topPopulatedCapitalsInRegion(Integer number, Connection con)
     {
