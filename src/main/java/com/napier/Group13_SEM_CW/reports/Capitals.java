@@ -101,7 +101,7 @@ public class Capitals {
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             " ORDER BY population DESC LIMIT '" + number + "'" + ";";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            /*ResultSet rset = stmt.executeQuery(strSelect);
             // Return city if valid.
             // Check one is returned.
             ArrayList<City> capitals = new ArrayList<>();
@@ -112,7 +112,8 @@ public class Capitals {
                 capital1.population = rset.getInt("city.population");
                 capitals.add(capital1);
             }
-            return capitals;
+            return capitals;*/
+            return (ArrayList<City>) stmt.executeQuery(strSelect);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Didn't manage to get capital city details");
