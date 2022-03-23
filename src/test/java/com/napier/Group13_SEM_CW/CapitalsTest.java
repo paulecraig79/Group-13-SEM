@@ -99,5 +99,22 @@ public class CapitalsTest {
         capital.getCapitalsInRegion("Southeast Asia", null);
     }
 
+    @Test
+    void topPopulatedCapitalsInWorldTestEmpty()
+    {
+        capital.topPopulatedCapitalsInWorld(0, con);
+    }
+
+    @Test
+    void topPopulatedCapitalsInWorldTestNullConnection()
+    {
+        capital.topPopulatedCapitalsInWorld(0, null);
+    }
+
+    @Test
+    void topPopulatedCapitalsInWorldTest()
+    {
+        capital.topPopulatedCapitalsInWorld(5, con);
+    }
 }
 
