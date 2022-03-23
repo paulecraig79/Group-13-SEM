@@ -62,8 +62,9 @@ public class CitiesTest {
 
     @Test
     void getCitiesArrayList() throws SQLException{
-        city.getTopCitiesInContinent("Europe", 10, con);
-        //897city.getCitiesArrayList(rset, con);
+        ResultSet rset;
+        rset = city.getTopCitiesInContinent("Europe", 10, con);
+        ArrayList<City> cities = city.getCitiesArrayList(rset);
     }
 
     @Test

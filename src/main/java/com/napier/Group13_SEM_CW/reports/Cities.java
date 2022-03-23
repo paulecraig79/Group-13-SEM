@@ -354,10 +354,9 @@ public class Cities {
     /** Takes the resultant SQL statements and inputs them into an ArrayList.
      *
      * @param rset A set of results provided by an SQL query.
-     * @param con A connection to the world database.
      * @return A result set of cities containing the required information columns.
      */
-    public ArrayList<City> getCitiesArrayList(ResultSet rset, Connection con) throws SQLException {
+    public ArrayList<City> getCitiesArrayList(ResultSet rset) throws SQLException {
         ArrayList<City> cities = new ArrayList<City>();
         while (rset.next()) {
             City city1 = new City();
