@@ -111,4 +111,34 @@ public class CitiesTest {
         city.getTopCitiesInDistrict(null, 10, con);
     }
 
+
+    @Test
+    void getAllCitiesInTheWorldTest(){
+        city.getAllCities(con);
+    }
+
+    @Test
+    void getCitiesInContinentTest(){
+      city.getCitiesInContinent("Europe", con);
+    }
+
+    @Test
+    void getCitiesInRegionTest(){
+        city.getCitiesInRegion(null, con);
+    }
+
+    @Test
+    void getCitiesInCountryTest(){
+        city.getCitiesInCountry("China", con);
+    }
+
+    @Test
+    void getCitiesInDistrictTest(){
+        city.getCitiesInDistrict(con);
+    }
+
+    @Test
+    void TopPopulatedCitiesTest(){
+        city.TopPopulatedCities(con);
+    }
 }

@@ -23,6 +23,7 @@ public class Countries {
                             "WHERE city.ID = capital " +
                             "GROUP BY countrycode " +
                             "ORDER BY population DESC;";
+
             // Execute SQL statement
             return (stmt.executeQuery(strSelect));
             // Return city if valid.
@@ -32,7 +33,162 @@ public class Countries {
                 System.out.println("Didn't manage to get country details");
                 return null;
             }
+    }
+
+    /**
+     * Use case 4: Get countries in a continent in order of largest to smallest population
+     * @param con
+     * @return
+     */
+    public ResultSet getCountriesInContinent(String continent, Connection con) {
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
+                            "FROM country JOIN city ON countrycode = country.code " +
+                            "WHERE city.ID = capital && continent =  '" + continent + "'" +
+                            "GROUP BY countrycode " +
+                            "ORDER BY population DESC;";
+
+            // Execute SQL statement
+            return (stmt.executeQuery(strSelect));
+            // Return city if valid.
+            // Check one is returned.
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get country details");
+            return null;
         }
+    }
+
+    /**
+     * Use case 5: Get countries in a region in order of largest to smallest population
+     * @param con
+     * @return
+     */
+    public ResultSet getCountriesInRegion(String region, Connection con) {
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
+                            "FROM country JOIN city ON countrycode = country.code " +
+                            "WHERE city.ID = capital && region =  '" + region + "'" +
+                            "GROUP BY countrycode " +
+                            "ORDER BY population DESC;";
+
+            // Execute SQL statement
+            return (stmt.executeQuery(strSelect));
+            // Return city if valid.
+            // Check one is returned.
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * Use case 6: Get top countries in the world in order of largest to smallest population
+     * @param con
+     * @return
+     */
+    public ResultSet getTopCountriesInWorld(Integer limit, Connection con) {
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
+                            "FROM country JOIN city ON countrycode = country.code " +
+                            "WHERE city.ID = capital "+
+                            "GROUP BY countrycode " +
+                            "ORDER BY population DESC " +
+                            "LIMIT " + limit + ";";
+
+            // Execute SQL statement
+            return (stmt.executeQuery(strSelect));
+            // Return city if valid.
+            // Check one is returned.
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * Use case 7: Get top countries in a continent in order of largest to smallest population
+     * @param con
+     * @return
+     */
+    public ResultSet getTopCountriesInContinent(Integer limit, String continent, Connection con) {
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
+                            "FROM country JOIN city ON countrycode = country.code " +
+                            "WHERE city.ID = capital && continent =  '" + continent + "'" +
+                            "GROUP BY countrycode " +
+                            "ORDER BY population DESC " +
+                            "LIMIT " + limit + ";";
+
+            // Execute SQL statement
+            return (stmt.executeQuery(strSelect));
+            // Return city if valid.
+            // Check one is returned.
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * Use case 8: Get top countries in a region in order of largest to smallest population
+     * @param con
+     * @return
+     */
+    public ResultSet getTopCountriesInRegion(Integer limit, String region, Connection con) {
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
+                            "FROM country JOIN city ON countrycode = country.code " +
+                            "WHERE city.ID = capital && region =  '" + region + "'" +
+                            "GROUP BY countrycode " +
+                            "ORDER BY population DESC " +
+                            "LIMIT " + limit + ";";
+
+            // Execute SQL statement
+            return (stmt.executeQuery(strSelect));
+            // Return city if valid.
+            // Check one is returned.
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get country details");
+            return null;
+        }
+    }
+
+
+
+
+
+
+
 
 
         /** Takes the resultant SQL statements and inputs them into an Arraylist

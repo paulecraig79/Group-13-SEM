@@ -8,6 +8,10 @@ import com.napier.Group13_SEM_CW.reports.Countries;
 import java.sql.*;
 import java.util.ArrayList;
 
+
+/**
+ * App is used to connect to sql database and is used for sql queries
+ */
 public class App
 {
     private static Connection con = null;
