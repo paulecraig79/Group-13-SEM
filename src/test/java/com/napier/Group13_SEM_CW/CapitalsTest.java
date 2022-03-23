@@ -75,28 +75,35 @@ public class CapitalsTest {
     }
 
     @Test
-    void getCapitalsInWorldTestNullConnection() {
-        capital.getCapitalsInWorld(null);
-    }
-
-    @Test
-    void getCapitalsInContinentTestNullContinent() {
+    void getCapitalsInContinentTestNullContinent()
+    {
         capital.getCapitalsInContinent(null, con);
     }
 
     @Test
-    void getCapitalsInContinentTestNullConnection() {
+    void getCapitalsInContinentTestNullConnection()
+    {
         capital.getCapitalsInContinent("Asia", null);
     }
 
     @Test
-    void getCapitalsInRegionTestNullRegion() {
+    void getCapitalsInRegionTestNullRegion()
+    {
         capital.getCapitalsInRegion(null, con);
     }
 
     @Test
-    void getCapitalsInRegionTestNullConnection(){
+    void getCapitalsInRegionTestNullConnection()
+    {
         capital.getCapitalsInRegion("Southeast Asia", null);
+    }
+
+
+
+    @Test
+    void getCapitalsInWorldTestNull()
+    {
+        capital.getCapitalsInWorld(null);
     }
 
     @Test
@@ -108,7 +115,7 @@ public class CapitalsTest {
     @Test
     void topPopulatedCapitalsInWorldTestNullConnection()
     {
-        capital.topPopulatedCapitalsInWorld(0, null);
+        capital.topPopulatedCapitalsInWorld(6, null);
     }
 
     @Test
@@ -116,5 +123,19 @@ public class CapitalsTest {
     {
         capital.topPopulatedCapitalsInWorld(5, con);
     }
+
+    @Test
+    void getWorldPopulationArrayList() throws SQLException{
+        try{
+            ResultSet rset;
+            rset = (ResultSet) capital.topPopulatedCapitalsInWorld(10, con);
+            ArrayList<City> capitals = capital.getCapitalsArrayList(rset);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+
 }
 

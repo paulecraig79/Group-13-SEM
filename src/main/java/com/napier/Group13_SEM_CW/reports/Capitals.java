@@ -128,11 +128,6 @@ public class Capitals {
     {
 
         try {
-            /*Scanner input = new Scanner(System.in);
-
-            System.out.print("Enter an integer: ");
-            int number = input.nextInt();*/
-
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
