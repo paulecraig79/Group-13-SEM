@@ -17,7 +17,11 @@ public class App
         // Connect to database
         Connections c = new Connections();
 
-        con = c.oldConnect();
+        if(args.length < 1){
+            c.newConnect("localhost:33060", 30000);
+        }else{
+            c.newConnect(args[0], Integer.parseInt(args[1]));
+        }
 
         // Disconnect from database
         c.disconnect();
