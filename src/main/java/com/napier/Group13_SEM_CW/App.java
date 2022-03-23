@@ -17,7 +17,7 @@ public class App
         // Connect to database
         Connections c = new Connections();
 
-        con = c.connect();
+        con = c.oldConnect();
 
         // Disconnect from database
         c.disconnect();

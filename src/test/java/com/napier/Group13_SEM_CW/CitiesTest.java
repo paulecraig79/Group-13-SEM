@@ -23,7 +23,7 @@ public class CitiesTest {
     @BeforeAll
     static void init(){
         city = new Cities();
-        con = c.connect();
+        con = c.oldConnect();
     }
 
     @AfterAll

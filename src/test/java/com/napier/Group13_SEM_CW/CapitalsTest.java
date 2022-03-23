@@ -22,7 +22,7 @@ public class CapitalsTest {
     @BeforeAll
     static void init(){
         capital = new Capitals();
-        con = c.connect();
+        con = c.oldConnect();
     }
 
     @AfterAll

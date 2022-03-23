@@ -11,7 +11,7 @@ public class Connections{
      */
     private Connection con = null;
 
-    public Connection connect()
+    public Connection oldConnect()
     {
         try
         {
