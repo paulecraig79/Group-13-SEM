@@ -62,9 +62,15 @@ public class CitiesTest {
 
     @Test
     void getCitiesArrayList() throws SQLException{
-        ResultSet rset;
-        rset = city.getTopCitiesInContinent("Europe", 10, con);
-        ArrayList<City> cities = city.getCitiesArrayList(rset);
+        try{
+            ResultSet rset;
+            rset = city.getTopCitiesInContinent("Europe", 10, con);
+            ArrayList<City> cities = city.getCitiesArrayList(rset);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
     @Test
@@ -104,4 +110,34 @@ public class CitiesTest {
         city.getTopCitiesInDistrict(null, 10, con);
     }
 
+
+    @Test
+    void getAllCitiesInTheWorldTest(){
+        city.getAllCities(con);
+    }
+
+    @Test
+    void getCitiesInContinentTest(){
+      city.getCitiesInContinent("Europe", con);
+    }
+
+    @Test
+    void getCitiesInRegionTest(){
+        city.getCitiesInRegion(null, con);
+    }
+
+    @Test
+    void getCitiesInCountryTest(){
+        city.getCitiesInCountry("China", con);
+    }
+
+    @Test
+    void getCitiesInDistrictTest(){
+        city.getCitiesInDistrict(con);
+    }
+
+    @Test
+    void TopPopulatedCitiesTest(){
+        city.TopPopulatedCities(con);
+    }
 }
