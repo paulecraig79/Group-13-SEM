@@ -136,7 +136,7 @@ public class Capitals {
         }
     }
 
-    /** Use case 19. The top N populated capital cities in a region where N is provided by the user.
+    /** Use case 19. The top N populated capital cities in the region where N is provided by the user.
      *
      * @return An array list of the top capital cities in the region.
      **/
@@ -149,10 +149,10 @@ public class Capitals {
             String strSelect =
                     "SELECT city.name, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE region = 'British Islands'" +
-                            " ORDER BY population DESC LIMIT '" + number + "'" + ";";
+                            "WHERE region = 'Central Africa' " +
+                            "ORDER BY population DESC LIMIT '" + number + "'" + ";";
             // Execute SQL statement
-            // Return city if valid.
+            //Return city if valid
             return (ArrayList<City>) stmt.executeQuery(strSelect);
         } catch (Exception e) {
             System.out.println(e.getMessage());
