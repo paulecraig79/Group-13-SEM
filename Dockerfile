@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/Group13_SEM_CW-0.1.0.2-jar-with-dependencies.jar /tmp
+COPY ./target/seMethods.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "Group13_SEM_CW-0.1.0.2-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "Group13_SEM_CW.jar", "db:3306", "30000"]
