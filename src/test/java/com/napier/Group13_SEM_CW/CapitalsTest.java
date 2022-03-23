@@ -98,13 +98,13 @@ public class CapitalsTest {
         capital.getCapitalsInRegion("Southeast Asia", null);
     }
 
-
-
     @Test
-    void getCapitalsInWorldTestNull()
-    {
+    void getCapitalsInWorldTestNull() {
         capital.getCapitalsInWorld(null);
     }
+
+
+
 
     @Test
     void topPopulatedCapitalsInWorldTestEmpty()
@@ -129,6 +129,61 @@ public class CapitalsTest {
         try{
             ResultSet rset;
             rset = (ResultSet) capital.topPopulatedCapitalsInWorld(10, con);
+            ArrayList<City> capitals = capital.getCapitalsArrayList(rset);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+    @Test
+    void topPopulatedCapitalsInContinentTestNullConnection()
+    {
+        capital.topPopulatedCapitalsInContinent(6, null);
+    }
+
+    @Test
+    void topPopulatedCapitalsInContinentTest()
+    {
+        capital.topPopulatedCapitalsInContinent(5, con);
+    }
+
+    @Test
+    void getContinentPopulationArrayList() throws SQLException{
+        try{
+            ResultSet rset;
+            rset = (ResultSet) capital.topPopulatedCapitalsInContinent(10, con);
+            ArrayList<City> capitals = capital.getCapitalsArrayList(rset);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    void topPopulatedCapitalsInRegionTestEmpty()
+    {
+        capital.topPopulatedCapitalsInRegion(0, con);
+    }
+
+    @Test
+    void topPopulatedCapitalsInRegionTestNullConnection()
+    {
+        capital.topPopulatedCapitalsInRegion(6, null);
+    }
+
+    @Test
+    void topPopulatedCapitalsInRegionTest()
+    {
+        capital.topPopulatedCapitalsInRegion(5, con);
+    }
+
+    @Test
+    void getRegionPopulationArrayList() throws SQLException{
+        try{
+            ResultSet rset;
+            rset = (ResultSet) capital.topPopulatedCapitalsInRegion(10, con);
             ArrayList<City> capitals = capital.getCapitalsArrayList(rset);
         }
         catch (Exception e)
