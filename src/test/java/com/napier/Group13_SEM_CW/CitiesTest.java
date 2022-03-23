@@ -65,7 +65,7 @@ public class CitiesTest {
         try {
             ResultSet rset;
             rset = city.getTopCitiesInContinent("Europe", 10, con);
-            ArrayList<City> capitals = city.getCitiesArrayList(rset);
+            ArrayList<City> cities = city.getCitiesArrayList(rset);
 
         }
         catch (Exception e){
