@@ -61,10 +61,17 @@ public class CitiesTest {
     }
 
     @Test
-    void getCitiesArrayList() throws SQLException{
-        ResultSet rset;
-        rset = city.getTopCitiesInContinent("Europe", 10, con);
-        ArrayList<City> cities = city.getCitiesArrayList(rset);
+    void getCapitalsArrayList() throws SQLException  {
+        try {
+            ResultSet rset;
+            rset = city.getTopCitiesInContinent("Europe", 10, con);
+            ArrayList<City> capitals = city.getCitiesArrayList(rset);
+
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 
     @Test
