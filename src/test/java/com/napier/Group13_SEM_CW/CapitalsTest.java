@@ -79,25 +79,25 @@ public class CapitalsTest {
         capital.getCapitalsInWorld(null);
     }
 
-//    @Test
-//    void getCapitalsInContinentTestNullContinent() {
-//        capital.getCapitalsInContinent(null, con);
-//    }
-//
-//    @Test
-//    void getCapitalsInContinentTestNullConnection() {
-//        capital.getCapitalsInContinent("Asia", null);
-//    }
+    @Test
+    void getCapitalsInContinentTestNullContinent() {
+        capital.getCapitalsInContinent(null, con);
+    }
 
-//    @Test
-//    void getCapitalsInRegionTestNullRegion() {
-//        capital.getCapitalsInRegion(null, con);
-//    }
-//
-//    @Test
-//    void getCapitalsInRegionTestNullConnection(){
-//        capital.getCapitalsInRegion("Southeast Asia", null);
-//    }
+    @Test
+    void getCapitalsInContinentTestNullConnection() {
+        capital.getCapitalsInContinent("Asia", null);
+    }
+
+    @Test
+    void getCapitalsInRegionTestNullRegion() {
+        capital.getCapitalsInRegion(null, con);
+    }
+
+    @Test
+    void getCapitalsInRegionTestNullConnection(){
+        capital.getCapitalsInRegion("Southeast Asia", null);
+    }
 
 }
 
