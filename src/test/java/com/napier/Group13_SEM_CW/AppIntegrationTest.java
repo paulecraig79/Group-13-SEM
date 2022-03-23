@@ -19,6 +19,5 @@ public class AppIntegrationTest {
     static void init() {
         app = new App();
         c.newConnect("localhost:33060", 3000);
-
     }
 }

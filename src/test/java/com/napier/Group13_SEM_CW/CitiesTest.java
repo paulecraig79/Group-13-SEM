@@ -133,6 +133,11 @@ public class CitiesTest {
     }
 
     @Test
+    void getCitiesInCountryTestNullConnection(){
+        city.getCitiesInCountry("China", null);
+    }
+
+    @Test
     void getCitiesInDistrictTest(){
         city.getCitiesInDistrict(con);
     }
