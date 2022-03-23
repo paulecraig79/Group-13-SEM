@@ -89,7 +89,7 @@ public class Capitals {
      *
      * @return An array list of the capital cities in the world in order of desceding population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInWorld(int number, Connection con)
+    public ArrayList<City> topPopulatedCapitalsInWorld(Integer number, Connection con)
     {
 
         try {
@@ -124,7 +124,7 @@ public class Capitals {
      *
      * @return An array list of the capital cities in the world in order of desceding population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInContinent(int number, Connection con)
+    public ArrayList<City> topPopulatedCapitalsInContinent(Integer number, Connection con)
     {
 
         try {
@@ -165,7 +165,7 @@ public class Capitals {
      *
      * @return An array list of the capital cities in the world in order of desceding population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInRegion(int number, Connection con)
+    public ArrayList<City> topPopulatedCapitalsInRegion(Integer number, Connection con)
     {
         try {
             // Create an SQL statement
