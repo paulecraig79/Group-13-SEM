@@ -18,7 +18,7 @@ public class AppIntegrationTest {
     @BeforeAll
     static void init() {
         app = new App();
-        c.newConnect("localhost:33060", 30000);
+        c.newConnect("localhost:33060", 3000);
 
     }
 }
