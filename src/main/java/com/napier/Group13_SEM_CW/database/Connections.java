@@ -56,7 +56,7 @@ public class Connections{
      * @param location
      * @param delay
      */
-    public void newConnect(String location, int delay) {
+    public Connection newConnect(String location, int delay) {
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -84,6 +84,7 @@ public class Connections{
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
+        return  con;
     }
 
     /**

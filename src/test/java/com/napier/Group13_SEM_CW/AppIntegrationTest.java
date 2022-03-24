@@ -18,15 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AppIntegrationTest {
     static Cities city;
     static Connections c = new Connections();
-    static Connection con = null;
+    Connection con = c.newConnect("localhost:33060", 0);
     static App app = new App();
 
     @BeforeAll
     static void init() {
         city = new Cities();
-        c.newConnect("localhost:33060", 30000);
-        Connection con = null;
-
     }
 
     @AfterAll
@@ -38,7 +35,7 @@ public class AppIntegrationTest {
     @Test
     void testGetTopCitiesInContinent() throws SQLException
     {
-        ResultSet rset = city.getTopCitiesInContinent("Europe", 10);
+        ResultSet rset = city.getTopCitiesInContinent("Europe", 10, con);
         ArrayList<City> cities = city.getCitiesArrayList(rset);
         City city1 = cities.get(0);
         assertEquals(city1.name, "Moscow");

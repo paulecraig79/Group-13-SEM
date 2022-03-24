@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class Cities {
 
-    static Connection con = null;
 
     /**
      * This method is used to get
@@ -247,9 +246,11 @@ public class Cities {
      * @param limit
      * @return A result set of the N most populated cities in a continent.
      */
-    public ResultSet getTopCitiesInContinent(String continent, int limit)
+    public ResultSet getTopCitiesInContinent(String continent, int limit, Connection con)
     {
         try {
+
+
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
