@@ -44,11 +44,11 @@ public class AppIntegrationTest {
 //        assertEquals(city1.district, "Moscow (City)");
 //    }
 
-    @Test
-    void testTopPopulatedCities(){
-        ArrayList<City> cities = city.TopPopulatedCities(con);
-        City city1 = cities.get(0);
-        assertEquals(city1.name, "Mumbai (Bombay)");
-    }
+//    @Test
+//    void testTopPopulatedCities(){
+//        ArrayList<City> cities = city.TopPopulatedCities(con);
+//        City city1 = cities.get(0);
+//        assertEquals(city1.name, "Mumbai (Bombay)");
+//    }
 
 }
