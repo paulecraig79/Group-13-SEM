@@ -35,11 +35,6 @@ public class AppIntegrationTest {
         c.disconnect();
     }
 
-    @Test
-    void testMethod(){
-        assertEquals(2, 2);
-    }
-
 //    @Test
 //    void testGetTopCitiesInContinent() throws SQLException
 //    {
