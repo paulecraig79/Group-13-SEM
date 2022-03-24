@@ -24,7 +24,7 @@ public class AppIntegrationTest {
     @BeforeAll
     static void init() {
         city = new Cities();
-        c.newConnect("localhost:33060", 1000);
+        c.newConnect("localhost:33060", 30000);
         Connection con = null;
 
     }
