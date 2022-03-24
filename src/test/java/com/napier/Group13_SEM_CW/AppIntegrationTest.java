@@ -18,12 +18,15 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AppIntegrationTest {
     static Cities city;
     static Connections c = new Connections();
-    static Connection con;
+    static Connection con = null;
+    static App app = new App();
 
     @BeforeAll
     static void init() {
         city = new Cities();
-        con = c.oldConnect();
+        c.newConnect("localhost:33060", 1000);
+        Connection con = null;
+
     }
 
     @AfterAll
@@ -32,10 +35,15 @@ public class AppIntegrationTest {
         c.disconnect();
     }
 
+    @Test
+    void testMethod(){
+        assertEquals(2, 2);
+    }
+
 //    @Test
 //    void testGetTopCitiesInContinent() throws SQLException
 //    {
-//        ResultSet rset = city.getTopCitiesInContinent("Europe", 10, con);
+//        ResultSet rset = city.getTopCitiesInContinent("Europe", 10);
 //        ArrayList<City> cities = city.getCitiesArrayList(rset);
 //        City city1 = cities.get(0);
 //        assertEquals(city1.name, "Moscow");
@@ -43,12 +51,21 @@ public class AppIntegrationTest {
 //        assertEquals(city1.countrycode, "Russian Federation");
 //        assertEquals(city1.district, "Moscow (City)");
 //    }
-
+//
 //    @Test
 //    void testTopPopulatedCities(){
 //        ArrayList<City> cities = city.TopPopulatedCities(con);
 //        City city1 = cities.get(0);
 //        assertEquals(city1.name, "Mumbai (Bombay)");
+//        assertEquals(city1.population, 10500000);
+//    }
+//
+//    @Test
+//    void testgetAllCities(){
+//        ArrayList<City> cities = city.getAllCities(con);
+//        City city1 = cities.get(0);
+//        assertEquals(city1.name, "Mumbai (Bombay)");
+//        assertEquals(city1.population, 10500000);
 //    }
 
 }

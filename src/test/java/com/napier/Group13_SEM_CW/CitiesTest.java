@@ -64,7 +64,7 @@ public class CitiesTest {
     void getCapitalsArrayList() throws SQLException  {
         try {
             ResultSet rset;
-            rset = city.getTopCitiesInContinent("Europe", 10, con);
+            rset = city.getTopCitiesInContinent("Europe", 10);
             ArrayList<City> cities = city.getCitiesArrayList(rset);
 
         }
@@ -76,12 +76,12 @@ public class CitiesTest {
 
     @Test
     void getTopCitiesInContinentTestNullConnection(){
-        city.getTopCitiesInContinent("Asia", 10, null);
+        city.getTopCitiesInContinent("Asia", 10);
     }
 
     @Test
     void getTopCitiesInContinentTestNullContinent(){
-        city.getTopCitiesInContinent(null, 10, con);
+        city.getTopCitiesInContinent(null, 10);
     }
 
     @Test
