@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AppIntegrationTest {
     static Cities city;
     static Connections c = new Connections();
-    Connection con = c.newConnect("localhost:33060", 0);
+    Connection con = c.newConnect("localhost:33060", 30000);
     static App app = new App();
 
     @BeforeAll
