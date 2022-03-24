@@ -32,16 +32,23 @@ public class AppIntegrationTest {
         c.disconnect();
     }
 
+//    @Test
+//    void testGetTopCitiesInContinent() throws SQLException
+//    {
+//        ResultSet rset = city.getTopCitiesInContinent("Europe", 10, con);
+//        ArrayList<City> cities = city.getCitiesArrayList(rset);
+//        City city1 = cities.get(0);
+//        assertEquals(city1.name, "Moscow");
+//        assertEquals(city1.population, 8389200);
+//        assertEquals(city1.countrycode, "Russian Federation");
+//        assertEquals(city1.district, "Moscow (City)");
+//    }
+
     @Test
-    void testGetTopCitiesInContinent() throws SQLException
-    {
-        ResultSet rset = city.getTopCitiesInContinent("Europe", 10, con);
-        ArrayList<City> cities = city.getCitiesArrayList(rset);
+    void testTopPopulatedCities(){
+        ArrayList<City> cities = city.TopPopulatedCities(con);
         City city1 = cities.get(0);
-        assertEquals(city1.name, "Moscow");
-        assertEquals(city1.population, 8389200);
-        assertEquals(city1.countrycode, "Russian Federation");
-        assertEquals(city1.district, "Moscow (City)");
+        assertEquals(city1.name, "Mumbai (Bombay)");
     }
 
 }
