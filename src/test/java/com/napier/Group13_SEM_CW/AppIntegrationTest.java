@@ -7,7 +7,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,8 +33,15 @@ public class AppIntegrationTest {
     }
 
     @Test
-    void testGetCountry()
+    void testgetTopCitiesInContinent() throws SQLException
     {
-        city.getTopCitiesInContinent("Europe", 10, con);
+        ResultSet rset = city.getTopCitiesInContinent("Europe", 10, con);
+        ArrayList<City> cities = city.getCitiesArrayList(rset);
+        City city1 = cities.get(0);
+        assertEquals(city1.name, "Moscow");
+        assertEquals(city1.population, 8389200);
+        assertEquals(city1.countrycode, "Russian Federation");
+        assertEquals(city1.district, "Moscow (City)");
+
     }
 }

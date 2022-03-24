@@ -6,4 +6,12 @@ public class City {
     public String countrycode;
     public String district;
     public int population;
+
+    public int getID(){
+        return ID;
+    }
+
+    public String getName(){
+        return name;
+    }
 }
