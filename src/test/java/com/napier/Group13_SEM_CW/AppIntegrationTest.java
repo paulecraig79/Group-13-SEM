@@ -33,7 +33,7 @@ public class AppIntegrationTest {
     }
 
     @Test
-    void testgetTopCitiesInContinent() throws SQLException
+    void testGetTopCitiesInContinent() throws SQLException
     {
         ResultSet rset = city.getTopCitiesInContinent("Europe", 10, con);
         ArrayList<City> cities = city.getCitiesArrayList(rset);
@@ -42,6 +42,6 @@ public class AppIntegrationTest {
         assertEquals(city1.population, 8389200);
         assertEquals(city1.countrycode, "Russian Federation");
         assertEquals(city1.district, "Moscow (City)");
-
     }
+
 }

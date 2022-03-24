@@ -19,7 +19,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=com.napier.Group13_SEM_CW.AppTest test
+        run: mvn -Dtest=com.napier.Group13_SEM_CW.CapitalsTest test
 
   IntegrationTests:
     name: Integration Tests
