@@ -19,7 +19,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=com.napier.Group13_SEM_CW.AppTest test
+        run: mvn -Dtest=com.napier.Group13_SEM_CW.CapitalsTest test
 
   IntegrationTests:
     name: Integration Tests
@@ -38,7 +38,7 @@ jobs:
         run: |
           docker build -t database ./db 
           docker run --name group13-sem-cw -dp 33060:3306 database
-          mvn -Dtest=com.napier.Group13_SEM_CW.AppIntegrationTest test          
+          mvn -Dtest=com.napier.Group13_SEM_CW.AppIntegrationTest test -DfailIfNoTests=false         
           docker stop group13-sem-cw
           docker rm group13-sem-cw
           docker image rm database
@@ -66,9 +66,3 @@ jobs:
         run: |
           mvn package -DskipTests
           docker-compose up --abort-on-container-exit
-
-
-
-
-
-
