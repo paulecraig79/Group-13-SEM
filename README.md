@@ -8,4 +8,5 @@
 
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/paulecraig79/Group-13-SEM/workflow%20for%20group%2013/develop)
 
+[![codecov](https://codecov.io/gh/paulecraig79/Group-13-SEM/branch/master/graph/badge.svg?token=PRNZBID5HV)](https://codecov.io/gh/paulecraig79/Group-13-SEM)
 

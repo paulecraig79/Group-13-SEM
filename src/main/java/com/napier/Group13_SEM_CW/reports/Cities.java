@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class Cities {
 
+    static Connection con = null;
+
     /**
      * This method is used to get
      * All the cities in the WORLD ORGANISED BY LARGEST POPULATION TO SMALLEST
@@ -245,7 +247,7 @@ public class Cities {
      * @param limit
      * @return A result set of the N most populated cities in a continent.
      */
-    public ResultSet getTopCitiesInContinent(String continent, int limit, Connection con)
+    public ResultSet getTopCitiesInContinent(String continent, int limit)
     {
         try {
             // Create an SQL statement
@@ -358,15 +360,21 @@ public class Cities {
      */
     public ArrayList<City> getCitiesArrayList(ResultSet rset) throws SQLException {
         ArrayList<City> cities = new ArrayList<City>();
-        while (rset.next()) {
-            City city1 = new City();
-            city1.name = rset.getString("city.name");
-            city1.countrycode = rset.getString("country");
-            city1.district = rset.getString("district");
-            city1.population = rset.getInt("city.population");
-            cities.add(city1);
+        try {
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to generate array list");
+            return null;
         }
-        return cities;
     }
 
     /**
