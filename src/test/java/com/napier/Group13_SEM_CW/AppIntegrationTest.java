@@ -4,16 +4,7 @@ import com.napier.Group13_SEM_CW.database.Connections;
 import com.napier.Group13_SEM_CW.reports.Cities;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-
-import javax.xml.transform.Result;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationTest {
     static Cities city;
