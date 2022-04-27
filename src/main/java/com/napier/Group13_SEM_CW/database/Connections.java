@@ -1,3 +1,4 @@
+/*
 package com.napier.Group13_SEM_CW.database;
 
 import java.sql.Connection;
@@ -6,9 +7,11 @@ import java.sql.SQLException;
 
 public class Connections{
 
-    /**
+    */
+/**
      * Connection to MySQL database.
-     */
+     *//*
+
     private Connection con = null;
 
     public Connection oldConnect()
@@ -50,12 +53,14 @@ public class Connections{
         return null;
     }
 
-    /**
+    */
+/**
      * New connection that allows for continuous integration.
      *
      * @param location
      * @param delay
-     */
+     *//*
+
     public Connection newConnect(String location, int delay) {
         try {
             // Load Database driver
@@ -87,9 +92,11 @@ public class Connections{
         return  con;
     }
 
-    /**
+    */
+/**
      * Disconnect from the MySQL database.
-     */
+     *//*
+
     public void disconnect()
     {
         if (con != null)
@@ -107,3 +114,4 @@ public class Connections{
         }
     }
 }
+*/
