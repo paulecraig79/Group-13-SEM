@@ -1,6 +1,6 @@
 # Main Repository Readme Details the Requirements Met
 
-20 requirements of 32 have been implemented, which is 62.5%.
+7 requirements of 32 have been implemented, which is 29%.
 
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
@@ -13,9 +13,9 @@
 | `7` | All the cities in the world organised by largest population to smallest. | Yes | Image |
 | `8` | All the cities in a continent organised by largest population to smallest. | Yes | Image |
 | `9` | All the cities in a region organised by largest population to smallest. | Yes | Image |
-| `10` | All the cities in a country organised by largest population to smallest. | | |
-| `11` | All the cities in a district organised by largest population to smallest. | | |
-| `12` | The top N populated cities in the world where N is provided by the user. | | |
+| `10` | All the cities in a country organised by largest population to smallest. | Yes | Image |
+| `11` | All the cities in a district organised by largest population to smallest. | Yes | Image |
+| `12` | The top N populated cities in the world where N is provided by the user. | Yes | Image |
 | `13` | The top N populated cities in a continent where N is provided by the user. | | |
 | `14` | The top N populated cities in a region where N is provided by the user. | | |
 | `15` | The top N populated cities in a country where N is provided by the user. | | |
@@ -47,6 +47,15 @@
 
 `9`
 ![MicrosoftTeams-image (4)](https://user-images.githubusercontent.com/75146656/165637566-58962c39-b1fd-4f50-8f28-e590b8d0d5ea.png)
+
+`10`
+![MicrosoftTeams-image](https://user-images.githubusercontent.com/75146656/165638339-aebff59b-eacd-4114-a32a-dd8cbb2a459b.png)
+
+`11`
+![MicrosoftTeams-image](https://user-images.githubusercontent.com/75146656/165641399-47241c3b-46cd-4c38-afdf-038ca7c8a255.png)
+
+`12`
+![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165641558-45c97fdf-c404-4e58-9780-71684862f23e.png)
 
 
 `20` 
