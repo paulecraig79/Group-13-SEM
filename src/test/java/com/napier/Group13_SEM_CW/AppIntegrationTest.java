@@ -1,3 +1,4 @@
+/*
 package com.napier.Group13_SEM_CW;
 
 import com.napier.Group13_SEM_CW.database.Connections;
@@ -5,7 +6,6 @@ import com.napier.Group13_SEM_CW.reports.Cities;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,21 +41,22 @@ public class AppIntegrationTest {
         assertEquals(city1.countrycode, "Russian Federation");
         assertEquals(city1.district, "Moscow (City)");
     }
-//
-//    @Test
-//    void testTopPopulatedCities(){
-//        ArrayList<City> cities = city.TopPopulatedCities(con);
-//        City city1 = cities.get(0);
-//        assertEquals(city1.name, "Mumbai (Bombay)");
-//        assertEquals(city1.population, 10500000);
-//    }
-//
-//    @Test
-//    void testgetAllCities(){
-//        ArrayList<City> cities = city.getAllCities(con);
-//        City city1 = cities.get(0);
-//        assertEquals(city1.name, "Mumbai (Bombay)");
-//        assertEquals(city1.population, 10500000);
-//    }
+
+    @Test
+    void testTopPopulatedCities(){
+        ArrayList<City> cities = city.TopPopulatedCities(con);
+        City city1 = cities.get(0);
+        assertEquals(city1.name, "Mumbai (Bombay)");
+        assertEquals(city1.population, 10500000);
+    }
+
+    @Test
+    void testgetAllCities(){
+        ArrayList<City> cities = city.getAllCities(con);
+        City city1 = cities.get(0);
+        assertEquals(city1.name, "Mumbai (Bombay)");
+        assertEquals(city1.population, 10500000);
+    }
 
 }
+*/
