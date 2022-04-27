@@ -1,5 +1,7 @@
 # Main Repository Readme Details the Requirements Met
 
+20 requirements of 32 have been implemented, which is 62.5%.
+
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
 | `1` | All the countries in the world organised by largest population to smallest. | | |
