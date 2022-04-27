@@ -1,6 +1,6 @@
 # Main Repository Readme Details the Requirements Met
 
-## 9 requirements of 32 have been implemented, which is 28%.
+## 11 requirements of 32 have been implemented, which is ...%.
 
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
@@ -16,10 +16,10 @@
 | `10` | All the cities in a country organised by largest population to smallest. | Yes | Image |
 | `11` | All the cities in a district organised by largest population to smallest. | Yes | Image |
 | `12` | The top N populated cities in the world where N is provided by the user. | Yes | Image |
-| `13` | The top N populated cities in a continent where N is provided by the user. | | |
-| `14` | The top N populated cities in a region where N is provided by the user. | | |
-| `15` | The top N populated cities in a country where N is provided by the user. | | |
-| `16` | The top N populated cities in a district where N is provided by the user. | | |
+| `13` | The top N populated cities in a continent where N is provided by the user. | Yes | Image |
+| `14` | The top N populated cities in a region where N is provided by the user. | Yes | Image |
+| `15` | The top N populated cities in a country where N is provided by the user. | Yes | Image |
+| `16` | The top N populated cities in a district where N is provided by the user. | Yes | Image |
 | `17` | All the capital cities in the world organised by largest population to smallest. | | |
 | `18` | All the capital cities in a continent organised by largest population to smallest. | | |
 | `19` | All the capital cities in a region organised by largest to smallest. | | |
@@ -58,6 +58,18 @@
 `12`
 ![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165641558-45c97fdf-c404-4e58-9780-71684862f23e.png)
 
+`13`
+![MicrosoftTeams-image](https://user-images.githubusercontent.com/75146656/165643410-fdb3fd71-843f-48bf-8d7b-8733bbab3b38.png)
+
+`14`
+![MicrosoftTeams-image](https://user-images.githubusercontent.com/75146656/165646343-1c56fde2-975c-412f-b7b9-396d142c9d0a.png)
+
+`15`
+![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165646445-f8eb0826-37d2-45e1-9d75-835a45af30e5.png)
+
+
+`16`
+![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165643612-5814638b-64b3-4fe6-9425-9f4c1134568a.png)
 
 `20` 
 ![TheTopCCITW](https://user-images.githubusercontent.com/75146656/165623648-884ce2a1-8a3a-4993-8cb0-0ff8ede9c395.png)
