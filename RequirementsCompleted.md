@@ -1,6 +1,6 @@
 # Main Repository Readme Details the Requirements Met
 
-7 requirements of 32 have been implemented, which is 29%.
+9 requirements of 32 have been implemented, which is 28%.
 
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
