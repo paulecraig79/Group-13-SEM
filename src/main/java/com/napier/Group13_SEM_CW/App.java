@@ -57,9 +57,14 @@ public class App {
 
         ArrayList<Country> topCounReg = a.getTopCountriesInRegion();
 
+        ArrayList<Population> countryPop = a.getCountryPopulation("Italy");
+
         //a.printCities(world);
 
-        a.printCountries(counCont);
+        //a.printCountries(counCont);
+
+        a.printPopulation(countryPop);
+
 
         // Disconnect from database
         a.disconnect();
@@ -942,6 +947,51 @@ public class App {
         }
     }
 
+    /** Use case 32. Gets a country population
+     *
+     * @returns an array list of country
+     **/
+
+    public ArrayList<Population> getCountryPopulation(String Country) {
+
+        try {
+            // Create an SQL statement
+            Statement statement = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.population, sum(city.population) as CountryCityPopulation, (country.population - sum(city.population))  as CountryNonCityPopulation " +
+                            "FROM country JOIN city ON countrycode = country.code " +
+                            "WHERE country.name = '" + Country + "'" +
+                            "GROUP BY countrycode; ";
+
+            // Execute SQL statement
+            ResultSet resultSet = statement.executeQuery(strSelect);
+
+
+
+
+
+
+            ArrayList<Population> populations = new ArrayList<>();
+            while (resultSet.next()) {
+                Population populations1 = new Population();
+                populations1.name = resultSet.getString("country.name");
+                populations1.population = resultSet.getInt("country.population");
+                populations1.cityPopulation = resultSet.getInt("");
+                populations1.notCityPopulation = resultSet.getInt("population.notCityPopulation");
+
+                populations.add(populations1);
+            }
+            return populations;
+        }
+
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Didn't manage to get country details");
+            return null;
+        }
+    }
+
 
 
     /**
@@ -1026,4 +1076,34 @@ public class App {
             System.out.println(emp_string);
         }
     }
+
+
+    /**
+     * Prints the contents specified of a list of populations.
+     *
+     * @param populations
+     */
+    public void printPopulation(ArrayList<Population> populations)
+    {
+        //Check countries is not null
+        if (populations == null){
+            System.out.println("No Populations");
+            return;
+        }
+
+        //Print header
+        System.out.println(String.format("%-14s %-14s %-5s %-5s", "name", "population", "cityPopulation", "notCityPopulation"));
+        //Loop over all populations in the list
+        for (Population population : populations)
+        {
+            if (population == null)
+                continue;
+            String emp_string =
+                    String.format("%-14s %-14s %-5s %-5s",
+                            population.name, population.population, population.cityPopulation, population.notCityPopulation);
+            System.out.println(emp_string);
+        }
+    }
+
+
 }
