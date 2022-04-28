@@ -57,10 +57,11 @@ public class App {
 
         ArrayList<Country> topCounReg = a.getTopCountriesInRegion();
 
-        //a.printCities(world);
+        ArrayList<CountryLanguage> languages = a.getTopLanguagesInWorld();
 
-        a.printCountries(counCont);
+        //a.printCountries(counCont);
 
+        a.printCountryLanguage(languages);
         // Disconnect from database
         a.disconnect();
 
@@ -120,6 +121,65 @@ public class App {
 
 
     //Countries
+    /** Use case 35: Get top 5 languages spoken in the world, the number of people who speak it and the percentage of speakers in the world
+     *
+     */
+
+     public ArrayList<CountryLanguage> getTopLanguagesInWorld(){
+         try {
+             //Create an SQL statement
+             Statement statement = con.createStatement();
+             //Create string for SQL statement
+             String strSelect = "SELECT language, ROUND(SUM(population * (percentage / 100))) AS speakers, " +
+             "ROUND(( (SUM(population * (percentage / 100))) / (SELECT SUM(DISTINCT population) FROM countrylanguage JOIN country ON (countrycode = country.code)) * 100), 2)  AS percentageOfWorldPopulation " +
+             "FROM countrylanguage JOIN country ON (countrycode = country.code) " +
+             "WHERE language = 'Chinese' OR language = 'English' OR language = 'Hindi' OR language = 'Spanish' OR language = 'Arabic' " +
+             "GROUP BY language" +
+             "ORDER BY speakers DESC;";
+
+             ResultSet resultSet = statement.executeQuery(strSelect);
+
+             ArrayList<CountryLanguage> languages = new ArrayList<>();
+
+             while (resultSet.next()){
+                 CountryLanguage language = new CountryLanguage();
+                 language.language = resultSet.getString("language");
+                 language.noOfSpeakers = resultSet.getString("speakers");
+                 language.percentage = resultSet.getFloat("percentageOfWorldPopulation");
+                 languages.add(language);
+             }
+             return languages;
+         }  catch (Exception e) {
+             System.out.println(e.getMessage());
+             System.out.println("Failed to get list of most spoken languages");
+             return null;
+         }
+     }
+
+    /**
+     * Prints the contents of a countryLanguage  array to the desired specifications.
+     */
+    public void printCountryLanguage(ArrayList<CountryLanguage> languages) {
+        //Check countries is not null
+        if (languages == null) {
+            System.out.println("No languages");
+            return;
+        }
+
+        //Print header
+        System.out.println(String.format("%-15s %-20s %-10s", "language", "speakers", "percentageOfWorldPopulation"));
+        //Loop over all countries in the list
+        for (CountryLanguage language : languages) {
+            if (language == null)
+                continue;
+            String emp_string =
+                    String.format("%-15s %-20s %-10s",
+                            language.language, language.noOfSpeakers, language.percentage);
+            System.out.println(emp_string);
+        }
+    }
+
+
 
     /**
      * Use case 8: Get top countries in a region in order of largest to smallest population

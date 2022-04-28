@@ -1,4 +1,4 @@
-
+/*
 package com.napier.Group13_SEM_CW;
 
 import com.napier.Group13_SEM_CW.reports.Capitals;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class CapitalsTest {
     Capitals capital = new Capitals();
-
+*/
     /*
         static Connections c = new Connections();
         static Connection con;
@@ -47,6 +47,7 @@ public class CapitalsTest {
             capital.printCapitals(capitals);
         }
     */
+    /*
     @Test
     void printCapitals() {
         ArrayList<City> capitals = new ArrayList<>();
@@ -61,6 +62,7 @@ public class CapitalsTest {
         capital.printCapitals(capitals);
     }
 }
+/*
 /*
     @Test
     void getCapitalsArrayList() throws SQLException  {
