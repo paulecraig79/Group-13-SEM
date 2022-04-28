@@ -49,7 +49,7 @@
 | `29` | The population of a country. | No | |
 | `30` | The population of a district. | No | |
 | `31` | The population of a city. | No | |
-| `32` | Chinese, English, Hindi, Spanish, Arabic. | Yes | Image |
+| `32` | Chinese, English, Hindi, Spanish, Arabic. | Yes |<img width="509" alt="Screenshot 2022-04-28 at 21 31 53" src="https://user-images.githubusercontent.com/77742997/165840904-4f0e22e2-6d5c-4790-a7f7-302bdf425b9f.png">|
 
 
 ### Screenshots
