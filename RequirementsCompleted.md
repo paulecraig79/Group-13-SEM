@@ -1,6 +1,6 @@
 # Main Repository Readme Details the Requirements Met
 
-## 13 requirements of 32 have been implemented, which is ...%.
+## 17 requirements of 32 have been implemented, which is ...%.
 
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
