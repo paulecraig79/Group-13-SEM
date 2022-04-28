@@ -57,11 +57,11 @@ public class App {
 
         ArrayList<Country> topCounReg = a.getTopCountriesInRegion();
 
-        ArrayList<CountryLanguage> languages = a.getTopLanguagesInWorld();
+        //ArrayList<CountryLanguage> languages = a.getTopLanguagesInWorld();
 
         //a.printCountries(counCont);
 
-        a.printCountryLanguage(languages);
+        //a.printCountryLanguage(languages);
         // Disconnect from database
         a.disconnect();
 
