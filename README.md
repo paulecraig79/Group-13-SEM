@@ -120,4 +120,5 @@
 ![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165637180-614dda36-778e-4103-a500-8cb0ce1c9b64.png)
 
 `32`
-![IMG_1504](https://user-images.githubusercontent.com/75146656/165743664-38e44ec1-c7c2-4a0d-8ed2-d1cad02d6070.png)
+![IMG_1504](ttps://user-images.githubusercontent.com/77742997/165840691-23ff8135-9a57-418e-803f-53f40b4e1bfd.png)
+
