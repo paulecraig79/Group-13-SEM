@@ -1,6 +1,6 @@
 # Main Repository Readme Details the Requirements Met
 
-## 22 requirements of 32 have been implemented, which is 68.75%.
+## 23 requirements of 32 have been implemented, which is 72%.
 
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
@@ -35,7 +35,7 @@
 | `29` | The population of a country. | No | |
 | `30` | The population of a district. | No | |
 | `31` | The population of a city. | No | |
-| `32` | Chinese, English, Hindi, Spanish, Arabic. | No | |
+| `32` | Chinese, English, Hindi, Spanish, Arabic. | Yes | Image |
 
 
 ### Screenshots
@@ -104,3 +104,8 @@
 
 `22` 
 ![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165637180-614dda36-778e-4103-a500-8cb0ce1c9b64.png)
+
+`32`
+![IMG_1504](https://user-images.githubusercontent.com/75146656/165743664-38e44ec1-c7c2-4a0d-8ed2-d1cad02d6070.png)
+
+
