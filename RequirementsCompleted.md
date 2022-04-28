@@ -1,12 +1,12 @@
 # Main Repository Readme Details the Requirements Met
 
-## 17 requirements of 32 have been implemented, which is ...%.
+## 19 requirements of 32 have been implemented, which is ...%.
 
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
 | `1` | All the countries in the world organised by largest population to smallest. | Yes | Image |
-| `2` | All the countries in a continent organised by largest population to smallest. | | |
-| `3` | All the countries in a region organised by largest population to smallest. | | |
+| `2` | All the countries in a continent organised by largest population to smallest. | Yes | Image |
+| `3` | All the countries in a region organised by largest population to smallest. | Yes | Image |
 | `4` | The top N populated countries in the world where N is provided by the user. | | |
 | `5` | The top N populated countries in a continent where N is provided by the user. | | |
 | `6` | The top N populated countries in a region where N is provided by the user. | | |
@@ -35,12 +35,18 @@
 | `29` | The population of a country. | | |
 | `30` | The population of a district. | | |
 | `31` | The population of a city. | | |
-| `32` | Chinese, English, Hindi, Spanish, Arabic. | | |
+| `32` | Chinese, English, Hindi, Spanish, Arabic. | No | |
 
 
 ### Screenshots
 `1`
 ![MicrosoftTeams-image (3)](https://user-images.githubusercontent.com/75146656/165653469-71b003a9-0c5b-43cf-b772-798939b6b015.png)
+
+`2`
+![MicrosoftTeams-image (4)](https://user-images.githubusercontent.com/75146656/165653727-169f911f-4f7d-4c92-b651-af7a7515d6d4.png)
+
+`3`
+![MicrosoftTeams-image (5)](https://user-images.githubusercontent.com/75146656/165654187-1772343f-0538-4da5-b50f-24f2611d92a1.png)
 
 `7`
 ![MicrosoftTeams-image (2)](https://user-images.githubusercontent.com/75146656/165637347-9ed5bff9-3477-4e5d-af7b-c5f8fc839df4.png)
