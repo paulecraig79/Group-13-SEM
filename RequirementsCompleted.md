@@ -59,6 +59,14 @@
 
 `7`
 ![MicrosoftTeams-image (2)](https://user-images.githubusercontent.com/75146656/165637347-9ed5bff9-3477-4e5d-af7b-c5f8fc839df4.png)
+`5`
+![MicrosoftTeams-image (7)](https://user-images.githubusercontent.com/75146656/165655850-c4a99a98-d5db-4114-960e-32911b99eab4.png)
+
+`6`
+![MicrosoftTeams-image (6)](https://user-images.githubusercontent.com/75146656/165655774-5dd4d797-04ac-400a-bcfa-a840715b90cf.png)
+
+`7`
+![MicrosoftTeams-image (2)](https://user-images.githubusercontent.com/75146656/165637347-9ed5bff9-3477-4e5d-af7b-c5f8fc839df4.png)
 
 `8`
 ![MicrosoftTeams-image (3)](https://user-images.githubusercontent.com/75146656/165637478-649d145d-ce30-4102-b287-fc98d0a5d8b2.png)
@@ -104,3 +112,6 @@
 
 `22` 
 ![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165637180-614dda36-778e-4103-a500-8cb0ce1c9b64.png)
+
+`32`
+![IMG_1504](https://user-images.githubusercontent.com/75146656/165743664-38e44ec1-c7c2-4a0d-8ed2-d1cad02d6070.png)
