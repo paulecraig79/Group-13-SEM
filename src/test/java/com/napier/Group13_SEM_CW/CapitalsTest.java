@@ -1,7 +1,6 @@
-/*
+
 package com.napier.Group13_SEM_CW;
 
-import com.napier.Group13_SEM_CW.database.Connections;
 import com.napier.Group13_SEM_CW.reports.Capitals;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,38 +13,40 @@ import java.util.ArrayList;
 
 public class CapitalsTest {
     static Capitals capital;
-    static Connections c = new Connections();
-    static Connection con;
 
-    @BeforeAll
-    static void init(){
-        capital = new Capitals();
-        con = c.oldConnect();
-    }
+    /*
+        static Connections c = new Connections();
+        static Connection con;
 
-    @AfterAll
-    static void disconnect(){
-        c.disconnect();
-    }
+        @BeforeAll
+        static void init(){
+            capital = new Capitals();
+            con = c.oldConnect();
+        }
 
-    @Test
-    void printCapitalsTestNull() {
-        capital.printCapitals(null);
-    }
+        @AfterAll
+        static void disconnect(){
+            c.disconnect();
+        }
 
-    @Test
-    void printCapitalsTestEmpty() {
-        ArrayList<City> capitals = new ArrayList<>();
-        capital.printCapitals(capitals);
-    }
+        @Test
+        void printCapitalsTestNull() {
+            capital.printCapitals(null);
+        }
 
-    @Test
-    void printCapitalsTestsContainsNull() {
-        ArrayList<City> capitals = new ArrayList<>();
-        capitals.add(null);
-        capital.printCapitals(capitals);
-    }
+        @Test
+        void printCapitalsTestEmpty() {
+            ArrayList<City> capitals = new ArrayList<>();
+            capital.printCapitals(capitals);
+        }
 
+        @Test
+        void printCapitalsTestsContainsNull() {
+            ArrayList<City> capitals = new ArrayList<>();
+            capitals.add(null);
+            capital.printCapitals(capitals);
+        }
+    */
     @Test
     void printCapitals() {
         ArrayList<City> capitals = new ArrayList<>();
@@ -57,7 +58,8 @@ public class CapitalsTest {
         capitals.add(capital1);
         capital.printCapitals(capitals);
     }
-
+}
+/*
     @Test
     void getCapitalsArrayList() throws SQLException  {
         try {
