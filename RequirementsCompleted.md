@@ -7,9 +7,9 @@
 | `1` | All the countries in the world organised by largest population to smallest. | Yes | Image |
 | `2` | All the countries in a continent organised by largest population to smallest. | Yes | Image |
 | `3` | All the countries in a region organised by largest population to smallest. | Yes | Image |
-| `4` | The top N populated countries in the world where N is provided by the user. | | |
-| `5` | The top N populated countries in a continent where N is provided by the user. | | |
-| `6` | The top N populated countries in a region where N is provided by the user. | | |
+| `4` | The top N populated countries in the world where N is provided by the user. | Yes | Image |
+| `5` | The top N populated countries in a continent where N is provided by the user. | Yes | Image |
+| `6` | The top N populated countries in a region where N is provided by the user. | Yes | Image |
 | `7` | All the cities in the world organised by largest population to smallest. | Yes | Image |
 | `8` | All the cities in a continent organised by largest population to smallest. | Yes | Image |
 | `9` | All the cities in a region organised by largest population to smallest. | Yes | Image |
@@ -47,6 +47,15 @@
 
 `3`
 ![MicrosoftTeams-image (5)](https://user-images.githubusercontent.com/75146656/165654187-1772343f-0538-4da5-b50f-24f2611d92a1.png)
+
+`4`
+![MicrosoftTeams-image (8)](https://user-images.githubusercontent.com/75146656/165655912-32bcacb0-0a31-45e7-9fbb-08fec94beb27.png)
+
+`5`
+![MicrosoftTeams-image (7)](https://user-images.githubusercontent.com/75146656/165655850-c4a99a98-d5db-4114-960e-32911b99eab4.png)
+
+`6`
+![MicrosoftTeams-image (6)](https://user-images.githubusercontent.com/75146656/165655774-5dd4d797-04ac-400a-bcfa-a840715b90cf.png)
 
 `7`
 ![MicrosoftTeams-image (2)](https://user-images.githubusercontent.com/75146656/165637347-9ed5bff9-3477-4e5d-af7b-c5f8fc839df4.png)
