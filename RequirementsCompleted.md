@@ -107,5 +107,3 @@
 
 `32`
 ![IMG_1504](https://user-images.githubusercontent.com/75146656/165743664-38e44ec1-c7c2-4a0d-8ed2-d1cad02d6070.png)
-
-
