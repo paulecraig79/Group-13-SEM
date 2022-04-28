@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class CapitalsTest {
-    static Capitals capital;
+    Capitals capital = new Capitals();
 
     /*
         static Connections c = new Connections();
@@ -51,11 +51,13 @@ public class CapitalsTest {
     void printCapitals() {
         ArrayList<City> capitals = new ArrayList<>();
         City capital1 = new City();
-        capital1.name = "Cario";
+        capital1.name = "Cairo";
         capital1.district = "Kairo";
         capital1.countrycode = "EGY";
         capital1.population = 67894979;
+        capital1.ID = 608;
         capitals.add(capital1);
+        //System.out.println(capital1.name);
         capital.printCapitals(capitals);
     }
 }
