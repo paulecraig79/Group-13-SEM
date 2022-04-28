@@ -26,15 +26,15 @@
 | `20` | The top N populated capital cities in the world where N is provided by the user. | Yes | Image |
 | `21` | The top N populated capital cities in a continent where N is provided by the user. | Yes | Image |
 | `22` | The top N populated capital cities in a region where N is provided by the user. | Yes | Image |
-| `23` | The population of people, people living in cities, and people not living in cities in each continent. | | |
-| `24` | The population of people, people living in cities, and people not living in cities in each region. | | |
-| `25` | The population of people, people living in cities, and people not living in cities in each country. | | |
-| `26` | The population of the world. | | |
-| `27` | The population of a continent. | | |
-| `28` | The population of a region. | | |
-| `29` | The population of a country. | | |
-| `30` | The population of a district. | | |
-| `31` | The population of a city. | | |
+| `23` | The population of people, people living in cities, and people not living in cities in each continent. | No | |
+| `24` | The population of people, people living in cities, and people not living in cities in each region. | No | |
+| `25` | The population of people, people living in cities, and people not living in cities in each country. | No | |
+| `26` | The population of the world. | No | |
+| `27` | The population of a continent. | No | |
+| `28` | The population of a region. | No | |
+| `29` | The population of a country. | No | |
+| `30` | The population of a district. | No | |
+| `31` | The population of a city. | No | |
 | `32` | Chinese, English, Hindi, Spanish, Arabic. | No | |
 
 
