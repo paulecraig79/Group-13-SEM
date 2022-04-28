@@ -119,6 +119,6 @@
 `22` 
 ![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/75146656/165637180-614dda36-778e-4103-a500-8cb0ce1c9b64.png)
 
-`32`
-![IMG_1504](ttps://user-images.githubusercontent.com/77742997/165840691-23ff8135-9a57-418e-803f-53f40b4e1bfd.png)
 
+`32`
+!<img width="509" alt="Screenshot 2022-04-28 at 21 31 53" src="https://user-images.githubusercontent.com/77742997/165840904-4f0e22e2-6d5c-4790-a7f7-302bdf425b9f.png">
