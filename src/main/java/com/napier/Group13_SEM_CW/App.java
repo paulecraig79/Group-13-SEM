@@ -17,49 +17,53 @@ public class App {
 
         ArrayList<City> continent = a.topPopulatedCapitalsInContinent();
 
-        ArrayList<City> region = a.topPopulatedCapitalsInRegion();
+        ArrayList<City> region = a.topPopulatedCapitalsInRegion("Eastern Asia");
 
         ArrayList<City> wor = a.getAllCities();
 
-        ArrayList<City> cont = a.getCitiesInContinent();
+        ArrayList<City> cont = a.getCitiesInContinent("Asia");
 
-        ArrayList<City> reg = a.getCitiesInRegion();
+        ArrayList<City> reg = a.getCitiesInRegion("Eastern Asia");
 
-        ArrayList<City> coun = a.getCitiesInCountry();
+        ArrayList<City> coun = a.getCitiesInCountry("Japan");
 
-        ArrayList<City> dist = a.getCitiesInDistrict();
+        ArrayList<City> dist = a.getCitiesInDistrict("Osaka");
 
-        ArrayList<City> top = a.TopPopulatedCities();
+        ArrayList<City> top = a.TopPopulatedCities(10);
 
-        ArrayList<City> topCont = a.getTopCitiesInContinent();
+        ArrayList<City> topCont = a.getTopCitiesInContinent("Asia", 10);
 
-        ArrayList<City> topDist = a.getTopCitiesInDistrict();
+        ArrayList<City> topDist = a.getTopCitiesInDistrict("Osaka", 10);
 
-        ArrayList<City> topReg = a.getTopCitiesInRegion();
+        ArrayList<City> topReg = a.getTopCitiesInRegion("Eastern Europe", 10);
 
-        ArrayList<City> topCoun = a.getTopCitiesInCountry();
+        ArrayList<City> topCoun = a.getTopCitiesInCountry("Spain", 10);
 
         ArrayList<City> capWor = a.getCapitalsInWorld();
 
-        ArrayList<City> capReg = a.getCapitalsInRegion();
+        ArrayList<City> capReg = a.getCapitalsInRegion("Central America");
 
-        ArrayList<City> capCont = a.getCapitalsInContinent();
+        ArrayList<City> capCont = a.getCapitalsInContinent("Asia");
 
         ArrayList<Country> counWol = a.getCountriesInWorld();
 
-        ArrayList<Country> counCont = a.getCountriesInContinent();
+        ArrayList<Country> counCont = a.getCountriesInContinent("Europe");
 
-        ArrayList<Country> counReg = a.getCountriesInRegion();
+        ArrayList<Country> counReg = a.getCountriesInRegion("Central America");
 
-        ArrayList<Country> topCounWol = a.getTopCountriesInWorld();
+        ArrayList<Country> topCounWol = a.getTopCountriesInWorld(7);
 
-        ArrayList<Country> topCounCont = a.getTopCountriesInContinent();
+        ArrayList<Country> topCounCont = a.getTopCountriesInContinent("North America", 3);
 
-        ArrayList<Country> topCounReg = a.getTopCountriesInRegion();
+        ArrayList<Country> topCounReg = a.getTopCountriesInRegion("Central America" , 5);
 
-        //ArrayList<CountryLanguage> languages = a.getTopLanguagesInWorld();
+        ArrayList<CountryLanguage> languages = a.getTopLanguagesInWorld();
 
-        //a.printCountries(counCont);
+        a.printCountries(topCounWol);
+
+        //a.printCapitals(capWor);
+
+//        a.printCities(topDist);
 
         //a.printCountryLanguage(languages);
         // Disconnect from database
@@ -134,7 +138,7 @@ public class App {
              "ROUND(( (SUM(population * (percentage / 100))) / (SELECT SUM(DISTINCT population) FROM countrylanguage JOIN country ON (countrycode = country.code)) * 100), 2)  AS percentageOfWorldPopulation " +
              "FROM countrylanguage JOIN country ON (countrycode = country.code) " +
              "WHERE language = 'Chinese' OR language = 'English' OR language = 'Hindi' OR language = 'Spanish' OR language = 'Arabic' " +
-             "GROUP BY language" +
+             "GROUP BY language " +
              "ORDER BY speakers DESC;";
 
              ResultSet resultSet = statement.executeQuery(strSelect);
@@ -183,8 +187,9 @@ public class App {
 
     /**
      * Use case 8: Get top countries in a region in order of largest to smallest population
+     * N is user input
      **/
-    public ArrayList<Country> getTopCountriesInRegion() {
+    public ArrayList<Country> getTopCountriesInRegion(String region, Integer N) {
         try {
             // Create an SQL statement
             Statement statement = con.createStatement();
@@ -192,10 +197,10 @@ public class App {
             String strSelect =
                     "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
                             "FROM country JOIN city ON countrycode = country.code " +
-                            "WHERE city.ID = capital && region =  'Caribbean'" +
+                            "WHERE city.ID = capital && region =  '" + region + "'" +
                             "GROUP BY countrycode " +
                             "ORDER BY population DESC " +
-                            "LIMIT 10";
+                            "LIMIT " + N +";";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
@@ -204,11 +209,12 @@ public class App {
 
             while (resultSet.next()){
                 Country country = new Country();
-                country.name = resultSet.getString("name");
                 country.code = resultSet.getString("code");
-                country.region = resultSet.getString("region");
+                country.name = resultSet.getString("name");
                 country.continent = resultSet.getString("continent");
+                country.region = resultSet.getString("region");
                 country.population = resultSet.getInt("population");
+                country.code2 = resultSet.getString("capital");
                 countries.add(country);
             }
             return countries;
@@ -222,8 +228,9 @@ public class App {
 
     /**
      * Use case 8: Get top countries in a continent in order of largest to smallest population
+     * N is user input
      **/
-    public ArrayList<Country> getTopCountriesInContinent() {
+    public ArrayList<Country> getTopCountriesInContinent(String continent, Integer N) {
         try {
             // Create an SQL statement
             Statement statement = con.createStatement();
@@ -231,10 +238,10 @@ public class App {
             String strSelect =
                     "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
                             "FROM country JOIN city ON countrycode = country.code " +
-                            "WHERE city.ID = capital && continent =  'South America'" +
+                            "WHERE city.ID = capital && continent =  '" + continent + "'" +
                             "GROUP BY countrycode " +
                             "ORDER BY population DESC " +
-                            "LIMIT 10";
+                            "LIMIT " + N + ";";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
@@ -243,11 +250,12 @@ public class App {
 
             while (resultSet.next()){
                 Country country = new Country();
-                country.name = resultSet.getString("name");
                 country.code = resultSet.getString("code");
-                country.region = resultSet.getString("region");
+                country.name = resultSet.getString("name");
                 country.continent = resultSet.getString("continent");
+                country.region = resultSet.getString("region");
                 country.population = resultSet.getInt("population");
+                country.code2 = resultSet.getString("capital");
                 countries.add(country);
             }
             return countries;
@@ -262,7 +270,7 @@ public class App {
     /**
      * Use case 8: Get top countries in the world in order of largest to smallest population
      **/
-    public ArrayList<Country> getTopCountriesInWorld() {
+    public ArrayList<Country> getTopCountriesInWorld(Integer N) {
         try {
             // Create an SQL statement
             Statement statement = con.createStatement();
@@ -273,7 +281,7 @@ public class App {
                             "WHERE city.ID = capital "+
                             "GROUP BY countrycode " +
                             "ORDER BY population DESC " +
-                            "LIMIT 10";
+                            "LIMIT " + N + ";";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
@@ -282,11 +290,12 @@ public class App {
 
             while (resultSet.next()){
                 Country country = new Country();
-                country.name = resultSet.getString("name");
                 country.code = resultSet.getString("code");
-                country.region = resultSet.getString("region");
+                country.name = resultSet.getString("name");
                 country.continent = resultSet.getString("continent");
+                country.region = resultSet.getString("region");
                 country.population = resultSet.getInt("population");
+                country.code2 = resultSet.getString("capital");
                 countries.add(country);
             }
             return countries;
@@ -301,7 +310,7 @@ public class App {
     /**
      * Use case 5: Get countries in a region in order of largest to smallest population
      **/
-    public ArrayList<Country> getCountriesInRegion() {
+    public ArrayList<Country> getCountriesInRegion(String region) {
         try {
             // Create an SQL statement
             Statement statement = con.createStatement();
@@ -309,7 +318,7 @@ public class App {
             String strSelect =
                     "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS capital " +
                             "FROM country JOIN city ON countrycode = country.code " +
-                            "WHERE city.ID = capital && region =  'Caribbean'" +
+                            "WHERE city.ID = capital && region =  '" + region + "'"+
                             "GROUP BY countrycode " +
                             "ORDER BY population DESC;";
             // Execute SQL statement
@@ -319,11 +328,12 @@ public class App {
 
             while (resultSet.next()){
                 Country country = new Country();
-                country.name = resultSet.getString("name");
                 country.code = resultSet.getString("code");
-                country.region = resultSet.getString("region");
+                country.name = resultSet.getString("name");
                 country.continent = resultSet.getString("continent");
+                country.region = resultSet.getString("region");
                 country.population = resultSet.getInt("population");
+                country.code2 = resultSet.getString("capital");
                 countries.add(country);
             }
             return countries;
@@ -338,15 +348,15 @@ public class App {
     /**
      * Use case 4: Get countries in a continent in order of largest to smallest population
      **/
-    public ArrayList<Country> getCountriesInContinent() {
+    public ArrayList<Country> getCountriesInContinent(String continent) {
         try {
             // Create an SQL statement
             Statement statement = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.name, country.code, country.continent, country.region, country.population " +
+                    "SELECT country.name, country.code, country.continent, country.region, country.population, city.name as capital " +
                             "FROM country JOIN city ON countrycode = country.code " +
-                            "WHERE city.ID = capital && continent =  'Europe'" +
+                            "WHERE city.ID = capital && continent =  '" + continent + "'" +
                             "GROUP BY countrycode " +
                             "ORDER BY population DESC;";
             // Execute SQL statement
@@ -357,11 +367,12 @@ public class App {
 
             while (resultSet.next()){
                 Country country = new Country();
-                country.name = resultSet.getString("name");
                 country.code = resultSet.getString("code");
-                country.region = resultSet.getString("region");
+                country.name = resultSet.getString("name");
                 country.continent = resultSet.getString("continent");
+                country.region = resultSet.getString("region");
                 country.population = resultSet.getInt("population");
+                country.code2 = resultSet.getString("capital");
                 countries.add(country);
             }
             return countries;
@@ -396,11 +407,12 @@ public class App {
 
             while (resultSet.next()){
                 Country country = new Country();
-                country.name = resultSet.getString("name");
                 country.code = resultSet.getString("code");
-                country.region = resultSet.getString("region");
+                country.name = resultSet.getString("name");
                 country.continent = resultSet.getString("continent");
+                country.region = resultSet.getString("region");
                 country.population = resultSet.getInt("population");
+                country.code2 = resultSet.getString("capital");
                 countries.add(country);
             }
             return countries;
@@ -424,23 +436,23 @@ public class App {
             Statement statement = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, country.name AS country, city.countrycode, city.population " +
+                    "SELECT city.name, country.name AS country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             " ORDER BY population DESC;";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
             //Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> capitals = new ArrayList<City>();
 
             while (resultSet.next()){
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.countrycode = resultSet.getString("countrycode");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+                City capital = new City();
+                capital.name = resultSet.getString("name");
+                capital.countrycode = resultSet.getString("country");
+                capital.population = resultSet.getInt("population");
+                capitals.add(capital);
             }
-            return cities;
+            return capitals;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get list of all cities");
@@ -451,7 +463,7 @@ public class App {
     /**
      * Use case 15. Gets all capital cities in a continent define by user organised from largest to smallest.
      **/
-    public ArrayList<City> getCapitalsInContinent()
+    public ArrayList<City> getCapitalsInContinent(String continent)
     {
         try {
             // Create an SQL statement
@@ -460,22 +472,22 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE continent = 'Europe'" +
+                            "WHERE continent = '" + continent + "'" +
                             " ORDER BY population DESC;";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
             //Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> capitals = new ArrayList<City>();
 
             while (resultSet.next()){
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.countrycode = resultSet.getString("countrycode");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+                City capital = new City();
+                capital.name = resultSet.getString("name");
+                capital.countrycode = resultSet.getString("country");
+                capital.population = resultSet.getInt("population");
+                capitals.add(capital);
             }
-            return cities;
+            return capitals;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get list of all cities");
@@ -486,30 +498,30 @@ public class App {
     /**
      * Use case 16. Gets all capital cities in a region defined by user organised from largest to smallest
      **/
-    public ArrayList<City> getCapitalsInRegion() {
+    public ArrayList<City> getCapitalsInRegion(String region) {
         try {
             // Create an SQL statement
             Statement statement = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, country.name AS country, city.countrycode, city.population " +
+                    "SELECT city.name, country.name AS country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE region = 'Caribbean'" +
+                            "WHERE region = '" + region + "'" +
                             " ORDER BY population DESC;";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
             //Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> capitals = new ArrayList<City>();
 
             while (resultSet.next()){
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.countrycode = resultSet.getString("countrycode");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+                City capital = new City();
+                capital.name = resultSet.getString("name");
+                capital.countrycode = resultSet.getString("country");
+                capital.population = resultSet.getInt("population");
+                capitals.add(capital);
             }
-            return cities;
+            return capitals;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get list of all cities");
@@ -525,30 +537,29 @@ public class App {
      *
      * In this case N is 10.
      */
-    public ArrayList<City> TopPopulatedCities(){
+    public ArrayList<City> TopPopulatedCities(Integer N){
         try{
             //Create an SQL statement
             Statement statement = con.createStatement();
 
             //Create string for SQL statement
             String strSelect =
-                    "SELECT name, countrycode, district, population "
-                            + "FROM city "
+                    "SELECT city.name, country.name as country, city.district, city.population "
+                            + "FROM city JOIN country ON (code = city.countrycode)"
                             + "ORDER BY population DESC "
-                            + "LIMIT 10 ";
+                            + "LIMIT " + N + ";";
             //Execute SQL statement
-            ResultSet resultSet = statement.executeQuery(strSelect);
+            ResultSet rset = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-
-            while (resultSet.next()){
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.district = resultSet.getString("district");
-                city.countrycode = resultSet.getString("countrycode");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
             }
             return cities;
         } catch (Exception e) {
@@ -562,7 +573,7 @@ public class App {
     /**
      * Use case 10. Gets the top N populated cities in a continent where N is provided by the user.
      **/
-    public ArrayList<City> getTopCitiesInContinent() {
+    public ArrayList<City> getTopCitiesInContinent(String continent, Integer N) {
         try {
             //Create an SQL statement
             Statement statement = con.createStatement();
@@ -571,21 +582,22 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, district, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE continent = 'Asia'" +
+                            "WHERE continent = '" + continent + "'" +
                             " ORDER BY population DESC " +
-                            " LIMIT 10";
+                            " LIMIT " + N + ";";
 
             //Execute SQL statement
-            ResultSet resultSet = statement.executeQuery(strSelect);
+            ResultSet rset = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-            while (resultSet.next()) {
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.district = resultSet.getString("district");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
             }
             return cities;
         } catch (Exception e) {
@@ -597,31 +609,33 @@ public class App {
 
 
     /**
-     * Use case 10. Gets the top N populated cities in a district where N is provided by the user.
+     * Use case 27. Gets the cities in a district from highest pop to lowest
      **/
-    public ArrayList<City> getCitiesInDistrict() {
+    public ArrayList<City> getCitiesInDistrict(String district) {
         try {
             //Create an SQL statement
             Statement statement = con.createStatement();
 
             //Create string for SQL statement
             String strSelect =
-                    "SELECT name, district, population "
-                            + "FROM city "
-                            + "WHERE district = 'Buenos Aires'"
-                            + "ORDER BY population DESC ";
+                    "SELECT city.name, country.name as country, city.district, city.population "
+                            + "FROM city JOIN country ON (code = city.countrycode)"
+                            + "WHERE district = '" + district +"'"
+                            + "ORDER BY population DESC ;";
+
 
             //Execute SQL statement
-            ResultSet resultSet = statement.executeQuery(strSelect);
+            ResultSet rset = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-            while (resultSet.next()) {
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.district = resultSet.getString("district");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
             }
             return cities;
         } catch (Exception e) {
@@ -635,7 +649,7 @@ public class App {
     /**
      * Use case 12. Gets the top N populated cities in a country where N is provided by the user.
      **/
-    public ArrayList<City> getTopCitiesInCountry()
+    public ArrayList<City> getTopCitiesInCountry(String country, Integer N)
     {
         try {
             // Create an SQL statement
@@ -644,22 +658,24 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, district, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE country.name = 'France'" +
+                            "WHERE country.name = '" + country +"'" +
                             " ORDER BY population DESC " +
-                            " LIMIT 10;";
+                            " LIMIT " + N +";";
             //Execute SQL statement
-            ResultSet resultSet = statement.executeQuery(strSelect);
+            ResultSet rset = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-            while (resultSet.next()) {
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.district = resultSet.getString("district");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
             }
             return cities;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get list of all cities");
@@ -671,7 +687,7 @@ public class App {
     /**
      * Use case 11. Gets the top N populated cities in a region where N is provided by the user.
      **/
-    public ArrayList<City> getTopCitiesInRegion()
+    public ArrayList<City> getTopCitiesInRegion(String region, Integer N)
     {
         try {
             // Create an SQL statement
@@ -680,20 +696,21 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, district, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE region = 'Caribbean'" +
+                            "WHERE region = '" + region + "'" +
                             " ORDER BY population DESC " +
-                            " LIMIT 10;";
+                            " LIMIT " + N +";";
             //Execute SQL statement
-            ResultSet resultSet = statement.executeQuery(strSelect);
+            ResultSet rset = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-            while (resultSet.next()) {
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.district = resultSet.getString("district");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
             }
             return cities;
         } catch (Exception e) {
@@ -707,7 +724,7 @@ public class App {
     /**
      * Use case 13. Gets the top N populated cities in a district where N is provided by the user.
      **/
-    public ArrayList<City> getTopCitiesInDistrict()
+    public ArrayList<City> getTopCitiesInDistrict(String district, Integer N)
     {
         try {
             // Create an SQL statement
@@ -716,20 +733,21 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, district, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE district = 'Buenos Aires'" +
+                            "WHERE district = '" + district + "'" +
                             " ORDER BY population DESC " +
-                            " LIMIT 10;";
+                            " LIMIT " + N + ";";
             //Execute SQL statement
-            ResultSet resultSet = statement.executeQuery(strSelect);
+            ResultSet rset = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-            while (resultSet.next()) {
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.district = resultSet.getString("district");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
             }
             return cities;
         } catch (Exception e) {
@@ -746,27 +764,27 @@ public class App {
      *
      * @return a list of cities, or null if there is an error
      */
-    public ArrayList<City> getCitiesInCountry(){
+    public ArrayList<City> getCitiesInCountry(String country){
         try{
             //Create an SQL statement
             Statement statement = con.createStatement();
 
             //Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, country.name AS countrycode, city.district, city.population "
+                    "SELECT city.name, country.name AS country, city.district, city.population "
                             + "FROM city JOIN country ON (code = city.countrycode) "
-                            + "WHERE country.name = 'France' "
+                            + "WHERE country.name = '" + country + "' "
                             + "ORDER BY population DESC ";
 
-            //Execute SQL statement
             //Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-            while (resultSet.next()) {
+            while (resultSet.next()){
                 City city = new City();
                 city.name = resultSet.getString("name");
+                city.countrycode = resultSet.getString("country");
                 city.district = resultSet.getString("district");
                 city.population = resultSet.getInt("population");
                 cities.add(city);
@@ -787,16 +805,16 @@ public class App {
      *
      * @return a list of cities, or null if there is an error
      */
-    public ArrayList<City> getCitiesInRegion(){
+    public ArrayList<City> getCitiesInRegion(String region){
         try{
             //Create an SQL statement
             Statement statement = con.createStatement();
 
             //Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.countrycode, city.population "
+                    "SELECT city.name, country.name as country, city.district, city.population "
                             + "FROM city JOIN country ON (code = city.countrycode) "
-                            + "WHERE region = 'Caribbean' "
+                            + "WHERE region = '" + region + "' "
                             + "ORDER BY population DESC ";
 
             //Execute SQL statement
@@ -807,7 +825,8 @@ public class App {
             while (resultSet.next()){
                 City city = new City();
                 city.name = resultSet.getString("name");
-                city.countrycode = resultSet.getString("countrycode");
+                city.countrycode = resultSet.getString("country");
+                city.district = resultSet.getString("district");
                 city.population = resultSet.getInt("population");
                 cities.add(city);
             }
@@ -826,16 +845,16 @@ public class App {
      *
      * @return a list of cities, or null if there is an error
      */
-    public ArrayList<City> getCitiesInContinent(){
+    public ArrayList<City> getCitiesInContinent(String continent){
         try{
             //Create an SQL statement
             Statement statement = con.createStatement();
 
             //Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.countrycode, city.population "
+                    "SELECT city.name, country.name as country, city.district,  city.population "
                             + "FROM city JOIN country ON (code = city.countrycode) "
-                            + "WHERE continent = 'Asia' "
+                            + "WHERE continent = '" + continent + "' "
                             + "ORDER BY population DESC ";
 
             //Execute SQL statement
@@ -845,7 +864,9 @@ public class App {
             ArrayList<City> cities = new ArrayList<City>();
             while (resultSet.next()){
                 City city = new City();
-                city.name = resultSet.getString("name");
+                city.name = resultSet.getString("city.name");
+                city.countrycode = resultSet.getString("country");
+                city.district = resultSet.getString("district");
                 city.population = resultSet.getInt("population");
                 cities.add(city);
             }
@@ -871,20 +892,22 @@ public class App {
 
             //Create string for SQL statement
             String strSelect =
-                    "SELECT name, population "
-                            + "FROM city "
+                    "SELECT city.name,country.name as country, city.district, city.population "
+                            + "FROM city JOIN country ON (code = city.countrycode) "
                             + "ORDER BY population DESC ";
 
             //Execute SQL statement
-            ResultSet resultSet = statement.executeQuery(strSelect);
+            ResultSet rset = statement.executeQuery(strSelect);
 
             //Extract city information
             ArrayList<City> cities = new ArrayList<City>();
-            while (resultSet.next()){
-                City city = new City();
-                city.name = resultSet.getString("name");
-                city.population = resultSet.getInt("population");
-                cities.add(city);
+            while (rset.next()) {
+                City city1 = new City();
+                city1.name = rset.getString("city.name");
+                city1.countrycode = rset.getString("country");
+                city1.district = rset.getString("district");
+                city1.population = rset.getInt("city.population");
+                cities.add(city1);
             }
             return cities;
         } catch (Exception e){
@@ -908,7 +931,7 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.countrycode, city.population " +
+                    "SELECT city.name, country.name as countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             " ORDER BY population DESC LIMIT 5;";
             // Execute SQL statement
@@ -919,7 +942,7 @@ public class App {
             while (rset.next()) {
                 City capital1 = new City();
                 capital1.name = rset.getString("city.name");
-                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.countrycode = rset.getString("countrycode");
                 capital1.population = rset.getInt("city.population");
                 capitals.add(capital1);
             }
@@ -942,7 +965,7 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.countrycode, city.population " +
+                    "SELECT city.name, country.name as country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
                             "WHERE continent = 'Africa'" +
                             " ORDER BY population DESC LIMIT 10;";
@@ -954,7 +977,7 @@ public class App {
             while (rset.next()) {
                 City capital1 = new City();
                 capital1.name = rset.getString("city.name");
-                capital1.countrycode = rset.getString("city.countrycode");
+                capital1.countrycode = rset.getString("country");
                 capital1.population = rset.getInt("city.population");
                 capitals.add(capital1);
             }
@@ -971,28 +994,30 @@ public class App {
      *
      * @return An array list of the capital cities in the world in order of desceding population.
      **/
-    public ArrayList<City> topPopulatedCapitalsInRegion()
+    public ArrayList<City> topPopulatedCapitalsInRegion(String region)
     {
         try {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            Statement statement = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.countrycode, city.population " +
+                    "SELECT city.name, country.name as country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE region = 'British Islands'" +
-                            " ORDER BY population DESC LIMIT 10;";
+                            "WHERE region = '" + region + "'" +
+                            "ORDER BY population " +
+                            "DESC LIMIT 10;";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return city if valid.
-            // Check one is returned.
-            ArrayList<City> capitals = new ArrayList<>();
-            while (rset.next()) {
-                City capital1 = new City();
-                capital1.name = rset.getString("city.name");
-                capital1.countrycode = rset.getString("city.countrycode");
-                capital1.population = rset.getInt("city.population");
-                capitals.add(capital1);
+            ResultSet resultSet = statement.executeQuery(strSelect);
+
+            //Extract city information
+            ArrayList<City> capitals = new ArrayList<City>();
+
+            while (resultSet.next()){
+                City capital = new City();
+                capital.name = resultSet.getString("name");
+                capital.countrycode = resultSet.getString("country");
+                capital.population = resultSet.getInt("population");
+                capitals.add(capital);
             }
             return capitals;
         } catch (Exception e) {
