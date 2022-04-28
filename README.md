@@ -18,9 +18,8 @@
 
 | ID | NAME | MET | SCREENSHOT |
 | --- | --- | --- | ---|
-| `1` | All the countries in the world organised by largest population to smallest. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 38 43" src="https://user-images.githubusercontent.com/77742997/165841726-2fd6a516-816f-4d05-a22d-590491b18efb.png|
-| `2` | All the countries in a continent organised by largest population to smallest. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 42 20" src="https://user-images.githubusercontent.com/77742997/165842225-31928918-6180-471f-9b1d-20692f7518f5.png">
-|
+| `1` | All the countries in the world organised by largest population to smallest. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 38 43" src="https://user-images.githubusercontent.com/77742997/165841726-2fd6a516-816f-4d05-a22d-590491b18efb.png>|
+| `2` | All the countries in a continent organised by largest population to smallest. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 42 20" src="https://user-images.githubusercontent.com/77742997/165842225-31928918-6180-471f-9b1d-20692f7518f5.png">|
 | `3` | All the countries in a region organised by largest population to smallest. | Yes | Image |
 | `4` | The top N populated countries in the world where N is provided by the user. | Yes | Image |
 | `5` | The top N populated countries in a continent where N is provided by the user. | Yes | Image |
