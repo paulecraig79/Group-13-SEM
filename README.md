@@ -20,9 +20,9 @@
 | --- | --- | --- | ---|
 | `1` | All the countries in the world organised by largest population to smallest. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 38 43" src="https://user-images.githubusercontent.com/77742997/165841726-2fd6a516-816f-4d05-a22d-590491b18efb.png">|
 | `2` | All the countries in a continent organised by largest population to smallest. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 42 20" src="https://user-images.githubusercontent.com/77742997/165842225-31928918-6180-471f-9b1d-20692f7518f5.png">|
-| `3` | All the countries in a region organised by largest population to smallest. | Yes | Image |
-| `4` | The top N populated countries in the world where N is provided by the user. | Yes | Image |
-| `5` | The top N populated countries in a continent where N is provided by the user. | Yes | Image |
+| `3` | All the countries in a region organised by largest population to smallest. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 46 16" src="https://user-images.githubusercontent.com/77742997/165842810-78bb2bf1-1b19-43e5-97a6-db40c82ad606.png">|
+| `4` | The top N populated countries in the world where N is provided by the user. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 21 59 06" src="https://user-images.githubusercontent.com/77742997/165844656-20cc36f4-c209-42f6-881c-269d6864a3c8.png">|
+| `5` | The top N populated countries in a continent where N is provided by the user. | Yes |<img width="676" alt="Screenshot 2022-04-28 at 22 02 10" src="https://user-images.githubusercontent.com/77742997/165845319-6364cd22-d90a-4f1a-becf-7fa343155b1c.png">|
 | `6` | The top N populated countries in a region where N is provided by the user. | Yes | Image |
 | `7` | All the cities in the world organised by largest population to smallest. | Yes | Image |
 | `8` | All the cities in a continent organised by largest population to smallest. | Yes | Image |
