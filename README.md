@@ -10,7 +10,7 @@
 
 [![codecov](https://codecov.io/gh/paulecraig79/Group-13-SEM/branch/master/graph/badge.svg?token=PRNZBID5HV)](https://codecov.io/gh/paulecraig79/Group-13-SEM)
 
-# ______________________________________________________________________________________________________________________________________
+_____________________________________________________________
 
 # Main Repository Readme Details the Requirements Met
 
