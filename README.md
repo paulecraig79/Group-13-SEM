@@ -29,11 +29,11 @@ _____________________________________________________________
 | `9` | All the cities in a region organised by largest population to smallest. | Yes |![Screenshot 2022-04-29 at 00 41 27](https://user-images.githubusercontent.com/77742997/165864686-87774090-3a53-46ef-ae80-371aa3f22269.png)|
 | `10` | All the cities in a country organised by largest population to smallest. | Yes |![Screenshot 2022-04-29 at 00 46 01](https://user-images.githubusercontent.com/77742997/165865037-84e1f436-deef-4318-b324-7452f2b7211c.png)|
 | `11` | All the cities in a district organised by largest population to smallest. | Yes |![Screenshot 2022-04-29 at 00 49 17](https://user-images.githubusercontent.com/77742997/165865297-0e58d8e1-75ad-4092-809f-481970a105ed.png)|
-| `12` | The top N populated cities in the world where N is provided by the user. | Yes | Image |
-| `13` | The top N populated cities in a continent where N is provided by the user. | Yes | Image |
-| `14` | The top N populated cities in a region where N is provided by the user. | Yes | Image |
-| `15` | The top N populated cities in a country where N is provided by the user. | Yes | Image |
-| `16` | The top N populated cities in a district where N is provided by the user. | Yes | Image |
+| `12` | The top N populated cities in the world where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 12 24 50" src="https://user-images.githubusercontent.com/77742997/165945669-8393f424-e6d7-4c17-a1ff-afba768c120e.png">|
+| `13` | The top N populated cities in a continent where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 12 49 38" src="https://user-images.githubusercontent.com/77742997/165945856-3d33335f-25dd-463c-a32c-db3073c3a122.png">|
+| `14` | The top N populated cities in a region where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 13 00 36" src="https://user-images.githubusercontent.com/77742997/165945918-abd9e879-1e6e-4e39-94ff-7f6e74ad5f31.png">|
+| `15` | The top N populated cities in a country where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 13 12 51" src="https://user-images.githubusercontent.com/77742997/165945984-e828f05d-7511-41e2-b1d4-1c41ffa4b593.png">|
+| `16` | The top N populated cities in a district where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 13 37 01" src="https://user-images.githubusercontent.com/77742997/165946029-8239e81d-09eb-4e15-8a99-bfcd04db2dbd.png">|
 | `17` | All the capital cities in the world organised by largest population to smallest. | Yes | Image |
 | `18` | All the capital cities in a continent organised by largest population to smallest. | Yes | Image |
 | `19` | All the capital cities in a region organised by largest to smallest. | Yes | Image |
