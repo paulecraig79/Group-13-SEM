@@ -34,12 +34,12 @@ _____________________________________________________________
 | `14` | The top N populated cities in a region where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 13 00 36" src="https://user-images.githubusercontent.com/77742997/165945918-abd9e879-1e6e-4e39-94ff-7f6e74ad5f31.png">|
 | `15` | The top N populated cities in a country where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 13 12 51" src="https://user-images.githubusercontent.com/77742997/165945984-e828f05d-7511-41e2-b1d4-1c41ffa4b593.png">|
 | `16` | The top N populated cities in a district where N is provided by the user. | Yes |<img width="620" alt="Screenshot 2022-04-29 at 13 37 01" src="https://user-images.githubusercontent.com/77742997/165946029-8239e81d-09eb-4e15-8a99-bfcd04db2dbd.png">|
-| `17` | All the capital cities in the world organised by largest population to smallest. | Yes | Image |
-| `18` | All the capital cities in a continent organised by largest population to smallest. | Yes | Image |
-| `19` | All the capital cities in a region organised by largest to smallest. | Yes | Image |
-| `20` | The top N populated capital cities in the world where N is provided by the user. | Yes | Image |
-| `21` | The top N populated capital cities in a continent where N is provided by the user. | Yes | Image |
-| `22` | The top N populated capital cities in a region where N is provided by the user. | Yes | Image |
+| `17` | All the capital cities in the world organised by largest population to smallest. | Yes |<img width="462" alt="Screenshot 2022-04-29 at 14 34 46" src="https://user-images.githubusercontent.com/77742997/165954836-c43a7ee8-2282-45c7-b30b-77a3fbc5ef7a.png">|
+| `18` | All the capital cities in a continent organised by largest population to smallest. | Yes |<img width="462" alt="Screenshot 2022-04-29 at 14 39 23" src="https://user-images.githubusercontent.com/77742997/165955744-5380c643-567e-4227-954b-1ba6e76b2f90.png">|
+| `19` | All the capital cities in a region organised by largest to smallest. | Yes |<img width="462" alt="Screenshot 2022-04-29 at 14 41 34" src="https://user-images.githubusercontent.com/77742997/165956169-f5fcb7f5-7f9d-4655-a95b-d2de9346610f.png">|
+| `20` | The top N populated capital cities in the world where N is provided by the user. | Yes |<img width="462" alt="Screenshot 2022-04-29 at 14 43 41" src="https://user-images.githubusercontent.com/77742997/165956758-a3b52e2c-f35d-4931-9fa9-ad3b28ff94bb.png">|
+| `21` | The top N populated capital cities in a continent where N is provided by the user. | Yes |<img width="462" alt="Screenshot 2022-04-29 at 14 45 17" src="https://user-images.githubusercontent.com/77742997/165956922-49384975-508c-4cb5-9e69-19b4d09dafe8.png">|
+| `22` | The top N populated capital cities in a region where N is provided by the user. | Yes |<img width="462" alt="Screenshot 2022-04-29 at 14 47 45" src="https://user-images.githubusercontent.com/77742997/165957369-fc007d3d-26db-4242-a9c8-22ea36e55d1e.png">|
 | `23` | The population of people, people living in cities, and people not living in cities in each continent. | No | |
 | `24` | The population of people, people living in cities, and people not living in cities in each region. | No | |
 | `25` | The population of people, people living in cities, and people not living in cities in each country. | No | |
