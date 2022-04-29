@@ -12,7 +12,7 @@
 
 _____________________________________________________________
 
-# Main Repository Readme Details the Requirements Met
+# Main Repository Requirements Met
 
 ## 23 requirements of 32 have been implemented, which is 72%.
 
