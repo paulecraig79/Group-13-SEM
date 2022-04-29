@@ -59,11 +59,11 @@ public class App {
 
         ArrayList<CountryLanguage> languages = a.getTopLanguagesInWorld();
 
-        a.printCountries(topCounWol);
+        //a.printCountries(topCounReg);
 
-        //a.printCapitals(capWor);
+        a.printCapitals(region);
 
-//        a.printCities(topDist);
+      //  a.printCities(capWor);
 
         //a.printCountryLanguage(languages);
         // Disconnect from database
@@ -438,7 +438,8 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            " ORDER BY population DESC;";
+                            "WHERE city.ID = country.capital " +
+                            "ORDER BY population DESC;";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
 
@@ -472,7 +473,7 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, city.countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE continent = '" + continent + "'" +
+                            "WHERE city.ID = country.capital AND continent = '" + continent + "'" +
                             " ORDER BY population DESC;";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
@@ -506,7 +507,7 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name AS country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE region = '" + region + "'" +
+                            "WHERE city.ID = country.capital AND region = '" + region + "'" +
                             " ORDER BY population DESC;";
             // Execute SQL statement
             ResultSet resultSet = statement.executeQuery(strSelect);
@@ -933,6 +934,7 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name as countrycode, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
+                            "WHERE city.id = country.capital" +
                             " ORDER BY population DESC LIMIT 5;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -967,7 +969,7 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name as country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE continent = 'Africa'" +
+                            "WHERE city.ID = country.capital AND continent = 'Africa'" +
                             " ORDER BY population DESC LIMIT 10;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -1003,7 +1005,7 @@ public class App {
             String strSelect =
                     "SELECT city.name, country.name as country, city.population " +
                             "FROM city JOIN country ON (code = city.countrycode) " +
-                            "WHERE region = '" + region + "'" +
+                            "WHERE city.id = country.capital AND region = '" + region + "'" +
                             "ORDER BY population " +
                             "DESC LIMIT 10;";
             // Execute SQL statement
